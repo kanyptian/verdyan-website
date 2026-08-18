@@ -315,7 +315,134 @@
         align-items: flex-start;
       }
     }
+/* =========================
+   SERVICES SECTION
+   ========================= */
 
+.services-section {
+    background: #f7f8fa;
+    padding: 95px 9% 105px;
+}
+
+.services-header {
+    max-width: 820px;
+    margin-bottom: 55px;
+}
+
+.services-kicker {
+    color: #173f78;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.services-header h2 {
+    color: #171717;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.08;
+    font-weight: 400;
+    margin: 0 0 22px;
+}
+
+.services-header h2 span {
+    display: block;
+    font-weight: 700;
+}
+
+.services-header p {
+    max-width: 760px;
+    color: #626870;
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.service-card {
+    background: #ffffff;
+    min-height: 340px;
+    padding: 38px 30px;
+    border: 1px solid #e2e5e9;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #171717;
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+.service-card:hover {
+    background: #101820;
+    color: #ffffff;
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px rgba(0,0,0,.12);
+}
+
+.service-number {
+    color: #d6b25e;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    margin-bottom: 30px;
+}
+
+.service-card h3 {
+    font-size: 23px;
+    line-height: 1.25;
+    font-weight: 600;
+    margin: 0 0 18px;
+}
+
+.service-card p {
+    color: #697079;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0 0 30px;
+}
+
+.service-card span {
+    margin-top: auto;
+    color: #173f78;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .03em;
+}
+
+.service-card:hover p {
+    color: #d8dde4;
+}
+
+.service-card:hover span {
+    color: #d6b25e;
+}
+
+@media (max-width: 1050px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .services-section {
+        padding: 70px 7%;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        min-height: auto;
+    }
+}
   </style>
 </head>
 
