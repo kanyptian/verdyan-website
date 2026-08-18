@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Verdyan Group | Governance, Risk & Compliance</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #171717;
+      background: #ffffff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================
+       TOP CONTACT BAR
+       ========================= */
+
+    .topbar {
+      height: 48px;
+      background: #111214;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 7%;
+      font-size: 13px;
+    }
+
+    .topbar-left,
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .topbar a:hover {
+      color: #d6b25e;
+    }
+
+    /* =========================
+       NAVIGATION
+       ========================= */
+
+    .navbar {
+      height: 92px;
+      background: #17191c;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 7%;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: .22em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+      color: #4f79b7;
+    }
+
+    .consult-button {
+      background: #173f78;
+      padding: 14px 24px;
+      border-radius: 4px;
+      transition: .25s ease;
+    }
+
+    .consult-button:hover {
+      background: #245797;
+      color: white !important;
+    }
+
+    /* =========================
+       HERO
+       ========================= */
+
+    .hero {
+      min-height: 620px;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(8, 14, 24, .94) 0%,
+          rgba(8, 14, 24, .80) 48%,
+          rgba(8, 14, 24, .35) 100%
+        ),
+        #27313d;
+
+      display: flex;
+      align-items: center;
+      padding: 80px 10%;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 720px;
+    }
+
+    .hero-label {
+      color: #d6b25e;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 5vw, 5.2rem);
+      line-height: 1.05;
+      font-weight: 500;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      font-weight: 700;
+    }
+
+    .hero p {
+      max-width: 610px;
+      font-size: 18px;
+      line-height: 1.7;
+      color: #e2e5e9;
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    .primary-button,
+    .secondary-button {
+      display: inline-block;
+      padding: 16px 26px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .primary-button {
+      background: #173f78;
+      color: white;
+    }
+
+    .primary-button:hover {
+      background: #245797;
+    }
+
+    .secondary-button {
+      border: 1px solid rgba(255,255,255,.55);
+      color: white;
+    }
+
+    .secondary-button:hover {
+      background: white;
+      color: #171717;
+    }
+
+    /* =========================
+       $99 GRC SNAPSHOT
+       ========================= */
+
+    .snapshot {
+      background: #f5f6f7;
+      padding: 75px 10%;
+    }
+
+    .snapshot-inner {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    .snapshot-copy {
+      max-width: 720px;
+    }
+
+    .snapshot-label {
+      color: #173f78;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      margin-bottom: 12px;
+    }
+
+    .snapshot h2 {
+      font-size: 38px;
+      margin-bottom: 16px;
+    }
+
+    .snapshot p {
+      color: #555;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .price {
+      color: #173f78;
+      font-size: 64px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .snapshot-button {
+      display: inline-block;
+      margin-top: 24px;
+      background: #173f78;
+      color: white;
+      padding: 15px 25px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 800px) {
+
+      .topbar {
+        height: auto;
+        padding: 14px 6%;
+      }
+
+      .topbar-left {
+        gap: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .topbar-right {
+        display: none;
+      }
+
+      .navbar {
+        height: auto;
+        padding: 22px 6%;
+      }
+
+      .nav-links a:not(.consult-button) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 540px;
+        padding: 65px 7%;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .snapshot-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- TOP CONTACT BAR -->
+
+  <div class="topbar">
+
+    <div class="topbar-left">
+      <span>☎ YOUR PHONE NUMBER</span>
+      <span>◷ Mon–Fri: 10:00 AM–6:00 PM</span>
+    </div>
+
+    <div class="topbar-right">
+      <a href="mailto:contact@verdean.com">✉ contact@verdean.com</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+    </div>
+
+  </div>
+
+
+  <!-- NAVIGATION -->
+
+  <nav class="navbar">
+
+    <a class="brand" href="index.html">
+      VERDYAN
+    </a>
+
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="assessment.html">$99 Assessment</a>
+      <a href="contact.html" class="consult-button">
+        Book a Consultation
+      </a>
+    </div>
+
+  </nav>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-label">
+        Governance • Risk • Compliance • Security
+      </div>
+
+      <h1>
+        Security and compliance
+        <span>without the complexity.</span>
+      </h1>
+
+      <p>
+        Verdyan Group helps organizations understand their risk,
+        strengthen their security programs, and navigate compliance
+        without turning the process into a maze of jargon and paperwork.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="services.html" class="primary-button">
+          Explore Our Services →
+        </a>
+
+        <a href="contact.html" class="secondary-button">
+          Talk With Us
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- $99 GRC SNAPSHOT -->
+
+  <section class="snapshot">
+
+    <div class="snapshot-inner">
+
+      <div class="snapshot-copy">
+
+        <div class="snapshot-label">
+          START HERE
+        </div>
+
+        <h2>
+          Get a clearer picture of your security posture.
+        </h2>
+
+        <p>
+          Our GRC Snapshot provides a high-level review of your
+          organization's governance, risk, security, and compliance
+          posture — with practical observations and priorities you can
+          actually use.
+        </p>
+
+        <a href="assessment.html" class="snapshot-button">
+          Get Your GRC Snapshot →
+        </a>
+
+      </div>
+
+      <div class="price">
+        $99
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>
