@@ -443,6 +443,35 @@
         min-height: auto;
     }
 }
+        }
+}
+
+/* Spinning navigation crest */
+
+.spinning-crest {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    animation: crest-spin 22s linear infinite;
+}
+
+@keyframes crest-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .spinning-crest {
+        animation: none;
+    }
+}
+
+</style>
   </style>
 </head>
 
@@ -470,9 +499,11 @@
 
   <nav class="navbar">
 
-    <a class="brand" href="index.html">
-      VERDYAN
-    </a>
+ <a class="brand" href="home.html">
+    <img class="spinning-crest"
+         src="Verdyan 2000.png"
+         alt="Verdyan">
+</a>
 
     <div class="nav-links">
       <a href="home.html">Home</a>
