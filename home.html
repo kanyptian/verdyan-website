@@ -449,13 +449,13 @@
 /* Spinning navigation crest */
 
 .brand img.spinning-crest {
-    width: 38px !important;
-    height: 38px !important;
-    max-width: 38px !important;
-    max-height: 38px !important;
+    width: 70px !important;
+    height: 70px !important;
+    max-width: 70px !important;
+    max-height: 70px !important;
     object-fit: contain;
     display: block;
-    animation: crest-spin 12s linear infinite;
+    animation: crest-spin 12s linear infinite !important;
 }
 
 @keyframes crest-spin {
@@ -465,12 +465,6 @@
 
     to {
         transform: rotate(360deg);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .spinning-crest {
-        animation: none;
     }
 }
 
