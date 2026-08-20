@@ -776,9 +776,17 @@ function completeAssessment() {
 
     document.getElementById("scoreSummary").innerHTML =
         summaryHTML;
+const assessmentId = "NIST-" + crypto.randomUUID();
+
+localStorage.setItem(
+    "verdyanNistAssessmentId",
+    assessmentId
+);
+
 const stripePaymentUrl =
     "https://buy.stripe.com/test_fZu5kDb1jdw78xF6CN57W00" +
-    "?client_reference_id=NIST-TEST";
+    "?client_reference_id=" +
+    encodeURIComponent(assessmentId);
 
 localStorage.setItem(
     "verdyanStripePaymentUrl",
