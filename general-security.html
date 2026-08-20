@@ -408,8 +408,8 @@ improving your security posture.
 
 <div class="score-summary" id="scoreSummary"></div>
 
-<a href="/contact.html" class="contact-button">
-CONTACT VERDYAN →
+<a href="#" class="contact-button" id="purchaseSnapshotButton">
+PURCHASE SECURITY SNAPSHOT — $99 →
 </a>
 
 </div>
@@ -862,6 +862,18 @@ localStorage.setItem(
     });
 
 }
+    document.getElementById("purchaseSnapshotButton").addEventListener("click", function(event) {
+    event.preventDefault();
+
+    const stripePaymentUrl = localStorage.getItem("verdyanStripePaymentUrl");
+
+    if (!stripePaymentUrl) {
+        alert("We couldn't prepare your payment link. Please refresh and try again.");
+        return;
+    }
+
+    window.location.href = stripePaymentUrl;
+});
 renderQuestion();
 
 </script>
