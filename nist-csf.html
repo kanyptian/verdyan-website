@@ -411,8 +411,8 @@ strengthening your cybersecurity program.
 
 <div class="score-summary" id="scoreSummary"></div>
 
-<a href="/contact.html" class="contact-button">
-CONTACT VERDYAN →
+<a href="#" class="contact-button" id="purchaseSnapshotButton">
+    PURCHASE SECURITY SNAPSHOT — $99 →
 </a>
 
 </div>
@@ -776,7 +776,14 @@ function completeAssessment() {
 
     document.getElementById("scoreSummary").innerHTML =
         summaryHTML;
+const stripePaymentUrl =
+    "https://buy.stripe.com/test_fZu5kDb1jdw78xF6CN57W00" +
+    "?client_reference_id=NIST-TEST";
 
+localStorage.setItem(
+    "verdyanStripePaymentUrl",
+    stripePaymentUrl
+);
 
     window.scrollTo({
         top:0,
@@ -785,7 +792,18 @@ function completeAssessment() {
 
 }
 
+document.getElementById("purchaseSnapshotButton").addEventListener("click", function(event) {
+    event.preventDefault();
 
+    const stripePaymentUrl = localStorage.getItem("verdyanStripePaymentUrl");
+
+    if (!stripePaymentUrl) {
+        alert("We couldn't prepare your payment link. Please refresh and try again.");
+        return;
+    }
+
+    window.location.href = stripePaymentUrl;
+});
 renderQuestion();
 
 </script>
