@@ -862,17 +862,10 @@ localStorage.setItem(
     });
 
 }
-    document.getElementById("purchaseSnapshotButton").addEventListener("click", function(event) {
+  document.getElementById("purchaseSnapshotButton").addEventListener("click", function(event) {
     event.preventDefault();
 
-    const stripePaymentUrl = localStorage.getItem("verdyanStripePaymentUrl");
-
-    if (!stripePaymentUrl) {
-        alert("We couldn't prepare your payment link. Please refresh and try again.");
-        return;
-    }
-
-    window.location.href = stripePaymentUrl;
+    window.location.href = "https://buy.stripe.com/test_fZu5kDb1jdw78xF6CN57W00";
 });
 renderQuestion();
 
