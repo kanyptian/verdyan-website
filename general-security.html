@@ -750,78 +750,110 @@ renderQuestion();
 
 
 function completeAssessment() {
+    
+    const lambdaUrl = "https://jyekephhjbrm4dbo5xhkxnnvi40ptokf.lambda-url.us-east-2.on.aws/";
 
-document.getElementById("assessment").style.display =
-"none";
+    const responseMap = {};
 
-const completion =
-document.getElementById("completion");
+    questions.forEach((q, index) => {
+        responseMap["question_" + (index + 1)] = {
+            category: q.category,
+            question: q.question,
+            answer: responses[index]
+        };
+    });
 
-completion.style.display =
-"block";
+    fetch(lambdaUrl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            customerName: "",
+            businessName: "",
+            email: "",
+            assessmentType: "General Security & Compliance Snapshot",
+            responses: responseMap
+        })
+    })
+    .then(saveResponse => {
+        if (!saveResponse.ok) {
+            throw new Error("Assessment could not be saved.");
+        }
 
+        return saveResponse.json();
+    })
+    .then(result => {
 
-const categories = [
-"GOVERNANCE",
-"ACCESS",
-"DATA PROTECTION",
-"OPERATIONS",
-"VENDOR RISK",
-"INCIDENT RESPONSE",
-"COMPLIANCE"
-];
+        localStorage.setItem(
+            "verdyanAssessmentId",
+            result.assessmentId
+        );
 
+        document.getElementById("assessment").style.display = "none";
 
-let summaryHTML = "";
+        const completion =
+            document.getElementById("completion");
 
+        completion.style.display = "block";
 
-categories.forEach(category => {
+        const categories = [
+            "GOVERNANCE",
+            "ACCESS",
+            "DATA PROTECTION",
+            "OPERATIONS",
+            "VENDOR RISK",
+            "INCIDENT RESPONSE",
+            "COMPLIANCE"
+        ];
 
-let earned = 0;
-let possible = 0;
+        let summaryHTML = "";
 
+        categories.forEach(category => {
 
-questions.forEach((q,index) => {
+            let earned = 0;
+            let possible = 0;
 
-if(q.category === category) {
+            questions.forEach((q, index) => {
 
-earned += responses[index];
+                if (q.category === category) {
+                    earned += responses[index];
+                    possible += 3;
+                }
 
-possible += 3;
+            });
+
+            const percentage =
+                Math.round((earned / possible) * 100);
+
+            summaryHTML +=
+                '<div class="score-box">' +
+                '<strong>' + category + '</strong>' +
+                percentage +
+                '% readiness' +
+                '</div>';
+        });
+
+        document.getElementById("scoreSummary").innerHTML =
+            summaryHTML;
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    })
+    .catch(error => {
+
+        console.error("Assessment submission error:", error);
+
+        alert(
+            "We couldn't save your assessment. Please try again."
+        );
+
+    });
 
 }
-
-});
-
-
-const percentage =
-Math.round((earned / possible) * 100);
-
-
-summaryHTML +=
-'<div class="score-box">' +
-'<strong>' +
-category +
-'</strong>' +
-percentage +
-'% readiness' +
-'</div>';
-
-});
-
-
-document.getElementById("scoreSummary").innerHTML =
-summaryHTML;
-
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
 renderQuestion();
 
 </script>
