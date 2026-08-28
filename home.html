@@ -443,8 +443,6 @@
         min-height: auto;
     }
 }
-        }
-}
 
 /* Spinning navigation crest */
 
@@ -468,6 +466,224 @@
     }
 }
 
+/* =========================
+   RESPONSIVE HOME FIX
+   Keeps the desktop composition intact while stacking the hero
+   and Security Snapshot cleanly on phones/tablets.
+   ========================= */
+
+@media (max-width: 800px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .topbar {
+    min-height: 44px;
+    height: auto;
+    padding: 11px 6%;
+    font-size: 12px;
+  }
+
+  .topbar-left {
+    width: 100%;
+    gap: 4px;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .navbar {
+    height: auto;
+    min-height: 82px;
+    padding: 12px 6%;
+    gap: 14px;
+  }
+
+  .brand img.spinning-crest {
+    width: 58px !important;
+    height: 58px !important;
+    max-width: 58px !important;
+    max-height: 58px !important;
+  }
+
+  .nav-links {
+    margin-left: auto;
+    gap: 0;
+  }
+
+  .nav-links a:not(.consult-button) {
+    display: none;
+  }
+
+  .consult-button {
+    padding: 12px 16px;
+    font-size: 13px !important;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .hero {
+    display: block;
+    min-height: 0;
+    padding: 54px 7% 48px;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(8, 14, 24, .97) 0%,
+        rgba(8, 14, 24, .94) 100%
+      ),
+      #27313d;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .hero-label {
+    max-width: 100%;
+    margin-bottom: 18px;
+    font-size: 11px;
+    line-height: 1.55;
+    letter-spacing: .17em;
+  }
+
+  .hero h1 {
+    max-width: 100%;
+    margin-bottom: 22px;
+    font-size: clamp(2.45rem, 11.5vw, 3.35rem);
+    line-height: 1.02;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .hero p {
+    max-width: none;
+    margin-bottom: 28px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .hero-buttons {
+    width: 100%;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+    padding: 15px 18px;
+    text-align: center;
+  }
+
+  .hero-promo {
+    position: static;
+    right: auto;
+    top: auto;
+    width: 100%;
+    max-width: none;
+    margin-top: 44px;
+    padding-top: 34px;
+    border-top: 1px solid rgba(214, 178, 94, .38);
+    text-align: left;
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .hero-promo > div:first-child {
+    margin-bottom: 14px !important;
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+  }
+
+  .hero-promo h2 {
+    margin-bottom: 16px !important;
+    font-size: 28px !important;
+    line-height: 1.13 !important;
+  }
+
+  .hero-promo p {
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-bottom: 18px !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+  }
+
+  .hero-promo > div:nth-of-type(2) {
+    margin-bottom: 16px !important;
+    font-size: 46px !important;
+  }
+
+  .hero-promo a {
+    display: inline-block;
+    line-height: 1.45;
+  }
+
+  .snapshot {
+    padding: 56px 7%;
+  }
+
+  .snapshot-inner {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .snapshot-copy {
+    max-width: none;
+  }
+
+  .snapshot h2 {
+    font-size: 30px;
+    line-height: 1.12;
+  }
+
+  .snapshot p {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .price {
+    font-size: 52px;
+  }
+
+  .snapshot-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .navbar {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .consult-button {
+    padding: 11px 13px;
+    font-size: 12px !important;
+  }
+
+  .hero {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .hero h1 {
+    font-size: 2.35rem;
+  }
+
+  .hero-promo h2 {
+    font-size: 26px !important;
+  }
+}
+
+
   </style>
 </head>
 
@@ -478,7 +694,6 @@
   <div class="topbar">
 
     <div class="topbar-left">
-      <span>☎ YOUR PHONE NUMBER</span>
       <span>◷ Mon–Fri: 10:00 AM–6:00 PM</span>
     </div>
 
@@ -655,9 +870,6 @@
     </div>
 
   </section>
-
-  </section>
-
 
 <section class="services-section" id="services">
 
