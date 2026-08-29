@@ -3,220 +3,476 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secure Rooms | The Verdyan Group</title>
-  <meta name="description" content="Secure Rooms by The Verdyan Group — a private, security-focused collaboration environment currently in development.">
+
+  <title>Verdyan Group</title>
+
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html, body { min-height:100%; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
     body {
-      min-height:100vh;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      overflow: hidden;
       font-family: Arial, Helvetica, sans-serif;
-      color:#f7f5ef;
-      background:#090909;
-      overflow-x:hidden;
+      background: #111;
     }
-    body::before {
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
+
+    .gateway {
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* ========================================
+       LEFT SIDE — GRC
+       ======================================== */
+
+    .panel-left {
+      width: 50%;
+      height: 100%;
+
+      background: #f4f2ed;
+      color: #151515;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transform: translateX(-100%);
+
+      animation:
+        slideLeft 1.4s cubic-bezier(.77, 0, .18, 1)
+        forwards;
+
+      cursor: pointer;
+
+      transition:
+        filter .45s ease;
+    }
+
+    /* ========================================
+       RIGHT SIDE — SECURE ROOMS
+       ======================================== */
+
+    .panel-right {
+      width: 50%;
+      height: 100%;
+
+      background: #111;
+      color: #fff;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      transform: translateX(100%);
+
+      animation:
+        slideRight 1.4s cubic-bezier(.77, 0, .18, 1)
+        forwards;
+
+      cursor: pointer;
+
+      transition:
+        filter .45s ease;
+    }
+
+    /* ========================================
+       TEXT
+       ======================================== */
+
+    .choice {
+      opacity: 0;
+
+      text-align: center;
+
+      animation:
+        revealChoice .8s ease forwards;
+
+      animation-delay: 2.2s;
+
+      transition:
+        transform .35s ease;
+    }
+
+    .choice h1 {
+    font-size: clamp(2.5rem, 5vw, 5.5rem);
+    font-weight: 500;
+    letter-spacing: .08em;
+}
+
+.panel-right .choice h1 {
+    font-size: clamp(2.3rem, 4.5vw, 5rem);
+}
+
+.panel-right .choice {
+    position: relative;
+    left: 70px;
+}
+
+    .choice p {
+      margin-top: 18px;
+
+      font-size: clamp(.65rem, 1vw, .9rem);
+
+      letter-spacing: .25em;
+
+      text-transform: uppercase;
+
+      opacity: .65;
+    }
+
+    /* ========================================
+       CENTER VERDYAN "LOCK"
+       ======================================== */
+
+    .lock {
+      position: absolute;
+
+      left: 50%;
+      top: 50%;
+
+      transform:
+        translate(-50%, -50%);
+        
+
+      width: clamp(240px, 23vw, 360px);
+      height: clamp(240px, 23vw, 360px);
+
+      border-radius: 0;
+
+      background: transparent;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      z-index: 10;
+
+      opacity: 0;
+
+      box-shadow: none;
+
+      animation:
+        lockReveal .7s ease forwards;
+
+      animation-delay: 1.45s;
+    }
+
+    .lock img {
+      width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* ========================================
+       CENTER SEAM
+       ======================================== */
+
+    .seam {
+      position: absolute;
+
+      left: 50%;
+      top: 0;
+
+      width: 1px;
+      height: 100%;
+
       background:
-        radial-gradient(circle at 50% 25%, rgba(255,255,255,.07), transparent 28%),
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-      background-size:auto, 46px 46px, 46px 46px;
-      mask-image:linear-gradient(to bottom, black, transparent 78%);
+        rgba(255, 255, 255, .14);
+
+      z-index: 4;
+
+      pointer-events: none;
     }
-    .topbar {
-      width:100%;
-      min-height:38px;
-      padding:8px 5vw;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      border-bottom:1px solid rgba(255,255,255,.09);
-      color:#aaa;
-      font-size:12px;
-      letter-spacing:.04em;
-      position:relative;
-      z-index:3;
+
+    /* ========================================
+       HOVER EFFECTS
+       ======================================== */
+
+    .panel-left:hover {
+      filter: brightness(1.035);
     }
-    .topbar a { color:#d8d8d8; text-decoration:none; }
-    .nav {
-      width:100%;
-      padding:16px 5vw;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      position:relative;
-      z-index:3;
+
+    .panel-right:hover {
+      filter: brightness(1.18);
     }
-    .brand img { width:76px; height:76px; object-fit:contain; display:block; }
-    .back {
-      color:#ddd;
-      text-decoration:none;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-size:11px;
-      border-bottom:1px solid rgba(255,255,255,.35);
-      padding-bottom:5px;
+
+    .panel-left:hover .choice,
+    .panel-right:hover .choice {
+      transform: scale(1.045);
     }
-    main {
-      position:relative;
-      z-index:2;
-      min-height:calc(100vh - 150px);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:35px 24px 70px;
+
+    /* ========================================
+       ENTRANCE ANIMATIONS
+       ======================================== */
+
+    @keyframes slideLeft {
+
+      from {
+        transform: translateX(-100%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
     }
-    .hero {
-      width:min(900px, 100%);
-      text-align:center;
-      animation:fadeUp 1s ease both;
+
+    @keyframes slideRight {
+
+      from {
+        transform: translateX(100%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
     }
-    .crest-wrap {
-      width:150px;
-      height:150px;
-      margin:0 auto 18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      filter:drop-shadow(0 0 28px rgba(255,255,255,.08));
+
+    /* Logo arrives AFTER the two halves meet */
+
+    @keyframes lockReveal {
+
+      0% {
+        opacity: 0;
+
+        transform:
+          translate(-50%, -50%)
+          scale(.55);
+      }
+
+      65% {
+        opacity: 1;
+
+        transform:
+          translate(-50%, -50%)
+          scale(1.08);
+      }
+
+      100% {
+        opacity: 1;
+
+        transform:
+          translate(-50%, -50%)
+          scale(1);
+      }
     }
-    .crest-wrap img { width:100%; height:100%; object-fit:contain; }
-    .status {
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      margin-bottom:24px;
-      color:#bcbcbc;
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.24em;
-      text-transform:uppercase;
+
+    /* GRC and Secure Rooms appear last */
+
+    @keyframes revealChoice {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
     }
-    .status::before { content:""; width:6px; height:6px; border-radius:50%; background:#eee; box-shadow:0 0 12px rgba(255,255,255,.65); }
-    h1 {
-      font-size:clamp(3rem, 8vw, 7.2rem);
-      font-weight:400;
-      line-height:.92;
-      letter-spacing:.075em;
-      margin-bottom:25px;
+
+    /* ========================================
+       MOBILE
+       ======================================== */
+
+    @media (max-width: 700px) {
+
+      .gateway {
+        flex-direction: column;
+      }
+
+      .panel-left,
+      .panel-right {
+        width: 100%;
+        height: 50%;
+      }
+
+      .panel-left {
+        transform: translateY(-100%);
+
+        animation:
+          slideTop 1.4s
+          cubic-bezier(.77, 0, .18, 1)
+          forwards;
+      }
+
+      .panel-right {
+        transform: translateY(100%);
+
+        animation:
+          slideBottom 1.4s
+          cubic-bezier(.77, 0, .18, 1)
+          forwards;
+      }
+
+      .lock {
+        left: 50%;
+        top: 50%;
+
+        width: 125px;
+        height: 125px;
+      }
+
+      .seam {
+        left: 0;
+        top: 50%;
+
+        width: 100%;
+        height: 1px;
+      }
+
+      .choice h1 {
+        font-size: clamp(2rem, 10vw, 4rem);
+      }
+
+      @keyframes slideTop {
+
+        from {
+          transform: translateY(-100%);
+        }
+
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideBottom {
+
+        from {
+          transform: translateY(100%);
+        }
+
+        to {
+          transform: translateY(0);
+        }
+      }
     }
-    .headline {
-      max-width:760px;
-      margin:0 auto 20px;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size:clamp(1.45rem, 3vw, 2.35rem);
-      line-height:1.25;
-      font-weight:400;
-      color:#f0eee8;
+
+    /* ========================================
+       REDUCED MOTION ACCESSIBILITY
+       ======================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .panel-left,
+      .panel-right,
+      .lock,
+      .choice {
+        animation: none;
+
+        transform: none;
+
+        opacity: 1;
+      }
+
+      .lock {
+        transform:
+          translate(-50%, -50%);
+      }
     }
-    .copy {
-      max-width:700px;
-      margin:0 auto;
-      color:#aaa;
-      font-size:15px;
-      line-height:1.8;
-    }
-    .divider { width:64px; height:1px; background:#666; margin:31px auto; }
-    .signup-title {
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.2em;
-      color:#ddd;
-      margin-bottom:13px;
-    }
-    .signup-copy { color:#8f8f8f; font-size:13px; margin-bottom:18px; }
-    form {
-      width:min(560px, 100%);
-      margin:0 auto;
-      display:flex;
-      border:1px solid #555;
-      background:rgba(255,255,255,.025);
-    }
-    input {
-      flex:1;
-      min-width:0;
-      border:0;
-      outline:0;
-      padding:17px 18px;
-      color:#fff;
-      background:transparent;
-      font-size:14px;
-    }
-    input::placeholder { color:#707070; }
-    button {
-      border:0;
-      border-left:1px solid #555;
-      padding:0 23px;
-      background:#f2f0ea;
-      color:#111;
-      cursor:pointer;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-      font-size:10px;
-    }
-    button:hover { background:#fff; }
-    .privacy { margin-top:12px; color:#626262; font-size:10px; letter-spacing:.04em; }
-    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-    @media (max-width:700px) {
-      .topbar { justify-content:center; flex-wrap:wrap; text-align:center; }
-      .topbar .hours { display:none; }
-      .nav { padding-top:12px; }
-      .brand img { width:62px; height:62px; }
-      main { padding-top:18px; }
-      .crest-wrap { width:118px; height:118px; }
-      h1 { font-size:clamp(2.6rem, 13vw, 4.2rem); letter-spacing:.045em; }
-      .copy { font-size:14px; line-height:1.7; }
-      form { flex-direction:column; border:0; gap:10px; background:transparent; }
-      input { border:1px solid #555; width:100%; }
-      button { min-height:50px; border:0; }
-    }
+
   </style>
 </head>
-<body>
-  <div class="topbar">
-    <div class="hours">☎ 585.746.2293 &nbsp;&nbsp; ◷ Mon–Fri: 10:00 AM–6:00 PM</div>
-    <a href="mailto:contact@verdyan.com">✉ contact@verdyan.com</a>
-  </div>
-  <nav class="nav">
-    <a class="brand" href="/" aria-label="Return to Verdyan"><img src="/Verdyan%202000.png" alt="The Verdyan Group"></a>
-    <a class="back" href="/">← Return to Verdyan</a>
-  </nav>
 
-  <main>
-    <section class="hero">
-      <div class="crest-wrap"><img src="/Verdyan%202000.png" alt="Verdyan crest"></div>
-      <div class="status">In Development</div>
-      <h1>SECURE ROOMS</h1>
-      <h2 class="headline">A private space for the conversations that shouldn't leave the room.</h2>
-      <p class="copy">
-        Secure Rooms is the next evolution of The Verdyan Group's commitment to security—extending protection beyond governance, risk, and compliance into the spaces where sensitive work actually happens. We're building a secure environment designed to give organizations greater confidence in how their teams communicate, collaborate, and share.
-      </p>
-      <div class="divider"></div>
-      <div class="signup-title">Be among the first to know</div>
-      <p class="signup-copy">Join the update list and we'll let you know when Secure Rooms is ready to open.</p>
-      <form id="updatesForm">
-        <input id="email" name="email" type="email" autocomplete="email" placeholder="Your email address" required aria-label="Email address">
-        <button type="submit">Keep Me Updated</button>
-      </form>
-      <p class="privacy">No noise. Just meaningful Secure Rooms updates.</p>
+
+<body>
+
+  <main class="gateway">
+
+    <!-- LEFT: GRC -->
+
+    <section
+      class="panel-left"
+      role="link"
+      tabindex="0"
+      aria-label="Enter Verdyan GRC"
+      onclick="window.location.href='home.html'"
+      onkeydown="
+        if(event.key === 'Enter' || event.key === ' ') {
+          window.location.href='home.html';
+        }
+      "
+    >
+
+      <div class="choice">
+
+        <h1>GRC</h1>
+
+        <p>
+          Governance • Risk • Compliance
+        </p>
+
+      </div>
+
     </section>
+
+
+    <!-- RIGHT: SECURE ROOMS -->
+
+    <section
+      class="panel-right"
+      role="link"
+      tabindex="0"
+      aria-label="Enter Verdyan Secure Rooms"
+      onclick="
+        window.location.href='secure-rooms.html'
+      "
+      onkeydown="
+        if(event.key === 'Enter' || event.key === ' ') {
+          window.location.href='secure-rooms.html';
+        }
+      "
+    >
+
+      <div class="choice">
+
+        <h1>SECURE ROOMS</h1>
+
+        <p>
+          Enter Secure Rooms
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- CENTER SEAM -->
+
+    <div class="seam"></div>
+
+
+    <!-- ONE CENTRAL VERDYAN LOGO -->
+
+    <div class="lock">
+
+      <img
+        src="Verdyan 2000.png"
+        alt="Verdyan Group"
+      >
+
+    </div>
+
   </main>
 
-  <script>
-    document.getElementById('updatesForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      if (!email) return;
-      const subject = encodeURIComponent('Secure Rooms Update List');
-      const body = encodeURIComponent('Please add this email address to the Secure Rooms update list: ' + email);
-      window.location.href = 'mailto:contact@verdyan.com?subject=' + subject + '&body=' + body;
-    });
-  </script>
 </body>
 </html>
