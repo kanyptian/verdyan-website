@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Governance & vCISO | The Verdyan Group</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #161616;
+            background: #f7f7f5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* NAVIGATION */
+
+        .service-nav {
+            background: #0d1b31;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-nav a {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .service-nav a:hover {
+            color: #d9b64c;
+        }
+
+        .service-nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        /* HERO */
+
+        .service-hero {
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(34, 94, 190, 0.24),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0f1728 0%,
+                    #142746 50%,
+                    #0d1b31 100%
+                );
+
+            color: #ffffff;
+            padding: 110px 7%;
+        }
+
+        .service-hero-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .kicker {
+            color: #d9b64c;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            margin-bottom: 22px;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1;
+            max-width: 900px;
+            margin: 0 0 28px;
+        }
+
+        .service-hero p {
+            max-width: 760px;
+            font-size: 19px;
+            line-height: 1.7;
+            color: #d8deea;
+            margin-bottom: 38px;
+        }
+
+        .primary-button {
+            display: inline-block;
+            background: #1465e8;
+            color: #ffffff;
+            padding: 17px 25px;
+            font-weight: 700;
+            font-size: 13px;
+            margin-right: 20px;
+        }
+
+        .secondary-link {
+            color: #d9b64c;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* GENERAL SECTIONS */
+
+        .content-section {
+            padding: 95px 7%;
+        }
+
+        .content-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            max-width: 800px;
+            margin-bottom: 55px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2.3rem, 4vw, 4rem);
+            line-height: 1.08;
+            margin: 0 0 24px;
+        }
+
+        .section-heading p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* FOUR SERVICE CARDS */
+
+        .governance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .governance-card {
+            border: 1px solid #dedede;
+            padding: 35px 28px;
+            min-height: 300px;
+            background: #ffffff;
+        }
+
+        .card-number {
+            color: #b18c26;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+
+        .governance-card h3 {
+            font-size: 23px;
+            margin: 28px 0 18px;
+        }
+
+        .governance-card p {
+            color: #5d5d5d;
+            line-height: 1.65;
+        }
+
+        /* VCISO SECTION */
+
+        .dark-section {
+            background: #0d1b31;
+            color: #ffffff;
+        }
+
+        .dark-section .section-heading p {
+            color: #d8deea;
+        }
+
+        .vciso-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .vciso-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 35px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .vciso-list li {
+            border-top: 1px solid rgba(255,255,255,.22);
+            padding-top: 16px;
+            color: #e5e9f0;
+        }
+
+        /* WHO IT'S FOR */
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .audience-card {
+            padding: 32px;
+            border-top: 3px solid #d9b64c;
+            background: #ffffff;
+        }
+
+        .audience-card h3 {
+            font-size: 22px;
+        }
+
+        .audience-card p {
+            color: #5d5d5d;
+            line-height: 1.65;
+        }
+
+        /* ENGAGEMENTS */
+
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .engagement-card {
+            border: 1px solid #d8d8d8;
+            padding: 35px;
+        }
+
+        .engagement-card h3 {
+            font-size: 22px;
+        }
+
+        .engagement-card p {
+            line-height: 1.65;
+            color: #555;
+            min-height: 105px;
+        }
+
+        .engagement-card a {
+            color: #0d1b31;
+            font-weight: 700;
+        }
+
+        /* CTA */
+
+        .final-cta {
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2.2rem, 4vw, 4rem);
+            max-width: 850px;
+            margin: 0 auto 25px;
+        }
+
+        .final-cta p {
+            color: #d8deea;
+            max-width: 700px;
+            margin: 0 auto 35px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            .service-nav {
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .service-nav-links {
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            .governance-grid,
+            .audience-grid,
+            .engagement-grid,
+            .vciso-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .vciso-list {
+                grid-template-columns: 1fr;
+            }
+
+            .service-hero {
+                padding: 75px 7%;
+            }
+
+            .content-section {
+                padding: 70px 7%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav class="service-nav">
+      <a href="/home.html">VERDYAN GROUP</a>
+
+<div class="service-nav-links">
+    <a href="/home.html">HOME</a>
+    <a href="/home.html#services">SERVICES</a>
+    <a href="/assessment.html">SNAPSHOT</a>
+    <a href="/contact.html">CONTACT</a>
+</div>
+    </nav>
+
+
+
+    <!-- WHAT WE DO -->
+
+    <section class="content-section" id="services">
+        <div class="content-inner">
+
+            <div class="section-heading">
+                <div class="kicker">GOVERNANCE & vCISO</div>
+
+                <h2>
+                    Build a security program that works for your business.
+                </h2>
+
+                <p>
+                    Security governance shouldn't exist only to satisfy an auditor.
+                    We help organizations build practical security programs around
+                    their actual operations, risks, customers, and regulatory obligations.
+                </p>
+            </div>
+
+
+            <div class="governance-grid">
+
+    <div class="governance-card">
+        <span class="card-number">01</span>
+        <h3>Security Strategy & Roadmaps</h3>
+        <p>
+            Turn business priorities, risk, and compliance requirements into
+            a practical security roadmap with clear priorities and next steps.
+        </p>
+    </div>
+
+    <div class="governance-card">
+        <span class="card-number">02</span>
+        <h3>Virtual CISO Leadership</h3>
+        <p>
+            Experienced security leadership for organizations that need
+            executive guidance without hiring a full-time CISO.
+        </p>
+    </div>
+
+    <div class="governance-card">
+        <span class="card-number">03</span>
+        <h3>Policy & Governance Development</h3>
+        <p>
+            Build and strengthen security policies, standards, governance
+            structures, accountability, and executive reporting.
+        </p>
+    </div>
+
+    <div class="governance-card">
+        <span class="card-number">04</span>
+        <h3>Security Program Maturity</h3>
+        <p>
+            Evaluate your current security program, identify gaps, and
+            prioritize improvements based on business risk.
+        </p>
+    </div>
+
+    <div class="governance-card">
+        <span class="card-number">05</span>
+        <h3>Executive & Board Guidance</h3>
+        <p>
+            Translate technical security issues into clear business risk,
+            priorities, and decisions leadership can act on.
+        </p>
+    </div>
+
+    <div class="governance-card">
+        <span class="card-number">06</span>
+        <h3>Vendor & Security Oversight</h3>
+        <p>
+            Provide experienced oversight of security vendors, internal teams,
+            remediation efforts, and security initiatives.
+        </p>
+    </div>
+
+</div>
+        </div>
+    </section>
+
+
+    <!-- VCISO -->
+
+    <section class="content-section dark-section">
+        <div class="content-inner vciso-layout">
+
+            <div class="section-heading">
+                <div class="kicker">
+                    FRACTIONAL SECURITY LEADERSHIP
+                </div>
+
+                <h2>A CISO when you need one.</h2>
+
+                <p>
+                    Growing organizations often reach a point where security requires
+                    executive ownership, but hiring a full-time CISO isn't yet practical.
+                    Verdyan provides experienced security leadership tailored to your
+                    organization's size, risk profile, and priorities.
+                </p>
+            </div>
+
+            <div>
+                <ul class="vciso-list">
+                    <li>Security program strategy</li>
+                    <li>Risk and compliance oversight</li>
+                    <li>Policy development</li>
+                    <li>Security roadmap development</li>
+                    <li>Vendor and third-party risk</li>
+                    <li>Incident preparedness</li>
+                    <li>Executive and board reporting</li>
+                    <li>Audit and assessment readiness</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- WHO THIS IS FOR -->
+
+    <section class="content-section">
+        <div class="content-inner">
+
+            <div class="section-heading">
+                <div class="kicker">WHO THIS IS FOR</div>
+
+                <h2>
+                    Security leadership that fits where your organization is today.
+                </h2>
+            </div>
+
+            <div class="audience-grid">
+
+                <div class="audience-card">
+                    <h3>Growing Businesses</h3>
+                    <p>
+                        Security requirements are becoming more complex than your
+                        existing IT team should manage alone.
+                    </p>
+                </div>
+
+                <div class="audience-card">
+                    <h3>Regulated Organizations</h3>
+                    <p>
+                        Customers, auditors, insurers, or regulators are asking for
+                        stronger governance and documented security controls.
+                    </p>
+                </div>
+
+                <div class="audience-card">
+                    <h3>Organizations Preparing to Scale</h3>
+                    <p>
+                        Build the security foundation now instead of rebuilding it
+                        after customers, contracts, or compliance requirements force
+                        the issue.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ENGAGEMENT OPTIONS -->
+
+    <section class="content-section">
+        <div class="content-inner">
+
+            <div class="section-heading">
+                <div class="kicker">HOW WE CAN WORK TOGETHER</div>
+
+                <h2>
+                    Engagements built around what you actually need.
+                </h2>
+            </div>
+
+            <div class="engagement-grid">
+
+                <div class="engagement-card">
+                    <h3>Advisory</h3>
+                    <p>
+                        Focused guidance for a specific security, governance,
+                        or executive challenge.
+                    </p>
+                    <a href="contact.html">DISCUSS YOUR NEEDS →</a>
+                </div>
+
+                <div class="engagement-card">
+                    <h3>Ongoing vCISO</h3>
+                    <p>
+                        Recurring security leadership, governance, planning,
+                        risk oversight, and executive support.
+                    </p>
+                    <a href="contact.html">DISCUSS YOUR NEEDS →</a>
+                </div>
+
+                <div class="engagement-card">
+                    <h3>Project-Based</h3>
+                    <p>
+                        Build or improve a specific component of your organization's
+                        security program.
+                    </p>
+                    <a href="contact.html">DISCUSS YOUR NEEDS →</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FINAL CTA -->
+
+    <section class="content-section dark-section final-cta">
+
+        <div class="content-inner">
+
+            <div class="kicker">
+                START A CONVERSATION
+            </div>
+
+            <h2>
+                Not sure how much security leadership you actually need?
+            </h2>
+
+            <p>
+                Start with a conversation. We'll help identify where outside
+                leadership can add value—and where your existing team can handle
+                things internally.
+            </p>
+
+            <a href="contact.html" class="primary-button">
+                BOOK A CONSULTATION →
+            </a>
+
+        </div>
+    </section>
+
+</body>
+</html>

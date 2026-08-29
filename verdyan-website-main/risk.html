@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Risk Management | The Verdyan Group</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #161616;
+            background: #f7f7f5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .service-nav {
+            min-height: 82px;
+            background: #0d1b31;
+            padding: 0 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-nav > a {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .04em;
+        }
+
+        .service-nav-links {
+            display: flex;
+            gap: 38px;
+            align-items: center;
+        }
+
+        .service-nav-links a {
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .service-nav-links a:hover,
+        .service-nav > a:hover {
+            color: #d5b05c;
+        }
+
+        /* =========================
+           MAIN RISK SECTION
+        ========================= */
+
+        .content-section {
+            padding: 85px 7% 100px;
+            background: #f7f7f5;
+        }
+
+        .content-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            max-width: 850px;
+            margin-bottom: 55px;
+        }
+
+        .kicker {
+            color: #9b7835;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            margin-bottom: 25px;
+        }
+
+        .section-heading h1 {
+            margin: 0 0 25px;
+            max-width: 850px;
+            font-size: clamp(46px, 5vw, 72px);
+            line-height: 1.04;
+            letter-spacing: -.035em;
+        }
+
+        .section-heading p {
+            margin: 0;
+            max-width: 880px;
+            font-size: 17px;
+            line-height: 1.7;
+            color: #4e4e4e;
+        }
+
+        /* =========================
+           SERVICE CARDS
+        ========================= */
+
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .risk-card {
+            background: #ffffff;
+            border: 1px solid #e4e4df;
+            padding: 36px 30px;
+            min-height: 270px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .risk-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .06);
+        }
+
+        .card-number {
+            display: block;
+            color: #9b7835;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            margin-bottom: 30px;
+        }
+
+        .risk-card h3 {
+            margin: 0 0 18px;
+            font-size: 22px;
+            line-height: 1.15;
+        }
+
+        .risk-card p {
+            margin: 0;
+            color: #555555;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        /* =========================
+           DARK SECTION
+        ========================= */
+
+        .dark-section {
+            background:
+                radial-gradient(
+                    circle at 75% 40%,
+                    rgba(24, 85, 178, .5),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    110deg,
+                    #101b31 0%,
+                    #122c58 55%,
+                    #123d7b 100%
+                );
+
+            color: #ffffff;
+            padding: 100px 7%;
+        }
+
+        .dark-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 90px;
+            align-items: start;
+        }
+
+        .dark-section .kicker {
+            color: #f1c75b;
+        }
+
+        .dark-copy h2 {
+            margin: 0 0 25px;
+            font-size: clamp(42px, 4vw, 62px);
+            line-height: 1.04;
+            letter-spacing: -.035em;
+        }
+
+        .dark-copy p {
+            margin: 0;
+            max-width: 550px;
+            color: #e3e7ef;
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .risk-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 32px;
+            padding-top: 28px;
+        }
+
+        .risk-list div {
+            padding: 18px 0;
+            border-top: 1px solid rgba(255, 255, 255, .22);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           CONSULTATION CTA
+        ========================= */
+
+        .consult-section {
+            background: #ffffff;
+            padding: 90px 7%;
+            text-align: center;
+        }
+
+        .consult-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .consult-inner h2 {
+            margin: 0 0 20px;
+            font-size: clamp(38px, 4vw, 58px);
+            line-height: 1.05;
+        }
+
+        .consult-inner p {
+            margin: 0 auto 35px;
+            max-width: 650px;
+            color: #555555;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .primary-button {
+            display: inline-block;
+            background: #1267ed;
+            color: #ffffff;
+            padding: 18px 28px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .03em;
+        }
+
+        .primary-button:hover {
+            background: #0d56c8;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #0d1b31;
+            color: rgba(255, 255, 255, .7);
+            padding: 35px 7%;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .service-nav {
+                padding: 20px 6%;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .service-nav-links {
+                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            .risk-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .dark-inner {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+        }
+
+        @media (max-width: 620px) {
+
+            .service-nav {
+                flex-direction: column;
+            }
+
+            .service-nav-links {
+                justify-content: flex-start;
+            }
+
+            .content-section,
+            .dark-section,
+            .consult-section {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .risk-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .risk-list {
+                grid-template-columns: 1fr;
+            }
+
+            .risk-card {
+                min-height: auto;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <nav class="service-nav">
+
+        <a href="/home.html">
+            VERDYAN GROUP
+        </a>
+
+        <div class="service-nav-links">
+            <a href="/home.html">HOME</a>
+            <a href="/home.html#services">SERVICES</a>
+            <a href="/assessment.html">SNAPSHOT</a>
+            <a href="/contact.html">CONTACT</a>
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         RISK MANAGEMENT
+    ========================== -->
+
+    <section class="content-section" id="services">
+
+        <div class="content-inner">
+
+            <div class="section-heading">
+
+                <div class="kicker">
+                    RISK MANAGEMENT
+                </div>
+
+                <h1>
+                    Understand your risk.
+                    Prioritize what matters.
+                </h1>
+
+                <p>
+                    Effective risk management isn't about eliminating every risk.
+                    We help organizations identify, evaluate, and prioritize
+                    security risks so resources are focused where they have the
+                    greatest business impact.
+                </p>
+
+            </div>
+
+
+            <div class="risk-grid">
+
+                <!-- 01 -->
+
+                <div class="risk-card">
+
+                    <span class="card-number">01</span>
+
+                    <h3>
+                        Security Risk Assessments
+                    </h3>
+
+                    <p>
+                        Identify security risks, control gaps, and areas of
+                        exposure across your technology, operations, and
+                        business processes.
+                    </p>
+
+                </div>
+
+
+                <!-- 02 -->
+
+                <div class="risk-card">
+
+                    <span class="card-number">02</span>
+
+                    <h3>
+                        Third-Party & Vendor Risk
+                    </h3>
+
+                    <p>
+                        Evaluate vendor security practices, dependencies,
+                        and third-party exposure before they become
+                        business problems.
+                    </p>
+
+                </div>
+
+
+                <!-- 03 -->
+
+                <div class="risk-card">
+
+                    <span class="card-number">03</span>
+
+                    <h3>
+                        Risk Analysis & Prioritization
+                    </h3>
+
+                    <p>
+                        Turn technical findings into clear business risk
+                        so teams know what requires attention first.
+                    </p>
+
+                </div>
+
+
+                <!-- 04 -->
+
+                <div class="risk-card">
+
+                    <span class="card-number">04</span>
+
+                    <h3>
+                        Remediation Planning
+                    </h3>
+
+                    <p>
+                        Develop practical remediation plans based on risk,
+                        available resources, operational impact, and urgency.
+                    </p>
+
+                </div>
+
+
+                <!-- 05 -->
+
+                <div class="risk-card">
+
+                    <span class="card-number">05</span>
+
+                    <h3>
+                        Risk Register Development
+                    </h3>
+
+                    <p>
+                        Build a structured view of identified risks,
+                        ownership, treatment decisions, and remediation
+                        progress.
+                    </p>
+
+                </div>
+
+
+                <!-- 06 -->
+
+                <div class="risk-card">
+
+                    <span class="card-number">06</span>
+
+                    <h3>
+                        Ongoing Risk Oversight
+                    </h3>
+
+                    <p>
+                        Track changing risks, remediation efforts, and
+                        emerging exposures as your organization evolves.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRACTICAL RISK MANAGEMENT
+    ========================== -->
+
+    <section class="dark-section">
+
+        <div class="dark-inner">
+
+            <div class="dark-copy">
+
+                <div class="kicker">
+                    PRACTICAL RISK MANAGEMENT
+                </div>
+
+                <h2>
+                    Know what needs attention first.
+                </h2>
+
+                <p>
+                    A long list of findings isn't a risk strategy.
+                    We help organizations understand which risks matter,
+                    what they mean for the business, and what should be
+                    addressed first.
+                </p>
+
+            </div>
+
+
+            <div class="risk-list">
+
+                <div>Risk identification</div>
+                <div>Risk scoring & prioritization</div>
+
+                <div>Third-party risk</div>
+                <div>Remediation tracking</div>
+
+                <div>Risk ownership</div>
+                <div>Executive risk reporting</div>
+
+                <div>Continuous risk review</div>
+                <div>Control-gap analysis</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONSULTATION
+    ========================== -->
+
+    <section class="consult-section">
+
+        <div class="consult-inner">
+
+            <div class="kicker">
+                LET'S TALK
+            </div>
+
+            <h2>
+                Turn risk into a plan.
+            </h2>
+
+            <p>
+                Whether you're starting with a formal risk assessment,
+                reviewing third-party exposure, or trying to prioritize
+                existing findings, we can help you determine the next step.
+            </p>
+
+            <a href="/contact.html" class="primary-button">
+                BOOK A CONSULTATION →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        © 2026 The Verdyan Group
+    </footer>
+
+</body>
+</html>

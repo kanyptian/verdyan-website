@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Security Testing | The Verdyan Group</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #161616;
+            background: #f7f7f5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* NAVIGATION */
+
+        .service-nav {
+            min-height: 82px;
+            background: #0d1b31;
+            padding: 0 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-nav > a {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .04em;
+        }
+
+        .service-nav-links {
+            display: flex;
+            gap: 38px;
+            align-items: center;
+        }
+
+        .service-nav-links a {
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .service-nav-links a:hover,
+        .service-nav > a:hover {
+            color: #d5b05c;
+        }
+
+        /* MAIN */
+
+        .content-section {
+            padding: 85px 7% 100px;
+            background: #f7f7f5;
+        }
+
+        .content-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            max-width: 900px;
+            margin-bottom: 55px;
+        }
+
+        .kicker {
+            color: #9b7835;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            margin-bottom: 25px;
+        }
+
+        .section-heading h1 {
+            margin: 0 0 25px;
+            max-width: 900px;
+            font-size: clamp(46px, 5vw, 72px);
+            line-height: 1.04;
+            letter-spacing: -.035em;
+        }
+
+        .section-heading p {
+            margin: 0;
+            max-width: 900px;
+            font-size: 17px;
+            line-height: 1.7;
+            color: #4e4e4e;
+        }
+
+        /* CARDS */
+
+        .testing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .testing-card {
+            background: #ffffff;
+            border: 1px solid #e4e4df;
+            padding: 36px 30px;
+            min-height: 285px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .testing-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .06);
+        }
+
+        .card-number {
+            display: block;
+            color: #9b7835;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            margin-bottom: 30px;
+        }
+
+        .testing-card h3 {
+            margin: 0 0 18px;
+            font-size: 22px;
+            line-height: 1.15;
+        }
+
+        .testing-card p {
+            margin: 0;
+            color: #555555;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        /* DARK SECTION */
+
+        .dark-section {
+            background:
+                radial-gradient(
+                    circle at 75% 40%,
+                    rgba(24, 85, 178, .5),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    110deg,
+                    #101b31 0%,
+                    #122c58 55%,
+                    #123d7b 100%
+                );
+
+            color: #ffffff;
+            padding: 100px 7%;
+        }
+
+        .dark-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 90px;
+            align-items: start;
+        }
+
+        .dark-section .kicker {
+            color: #f1c75b;
+        }
+
+        .dark-copy h2 {
+            margin: 0 0 25px;
+            font-size: clamp(42px, 4vw, 62px);
+            line-height: 1.04;
+            letter-spacing: -.035em;
+        }
+
+        .dark-copy p {
+            margin: 0;
+            max-width: 560px;
+            color: #e3e7ef;
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .testing-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 32px;
+            padding-top: 28px;
+        }
+
+        .testing-list div {
+            padding: 18px 0;
+            border-top: 1px solid rgba(255, 255, 255, .22);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* CTA */
+
+        .consult-section {
+            background: #ffffff;
+            padding: 90px 7%;
+            text-align: center;
+        }
+
+        .consult-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .consult-inner h2 {
+            margin: 0 0 20px;
+            font-size: clamp(38px, 4vw, 58px);
+            line-height: 1.05;
+        }
+
+        .consult-inner p {
+            margin: 0 auto 35px;
+            max-width: 680px;
+            color: #555555;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .primary-button {
+            display: inline-block;
+            background: #1267ed;
+            color: #ffffff;
+            padding: 18px 28px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .03em;
+        }
+
+        .primary-button:hover {
+            background: #0d56c8;
+        }
+
+        footer {
+            background: #0d1b31;
+            color: rgba(255, 255, 255, .7);
+            padding: 35px 7%;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        @media (max-width: 900px) {
+
+            .service-nav {
+                padding: 20px 6%;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .service-nav-links {
+                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            .testing-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .dark-inner {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+        }
+
+        @media (max-width: 620px) {
+
+            .service-nav {
+                flex-direction: column;
+            }
+
+            .service-nav-links {
+                justify-content: flex-start;
+            }
+
+            .content-section,
+            .dark-section,
+            .consult-section {
+                padding-left: 6%;
+                padding-right: 6%;
+            }
+
+            .testing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testing-list {
+                grid-template-columns: 1fr;
+            }
+
+            .testing-card {
+                min-height: auto;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav class="service-nav">
+
+        <a href="/home.html">
+            VERDYAN GROUP
+        </a>
+
+        <div class="service-nav-links">
+            <a href="/home.html">HOME</a>
+            <a href="/home.html#services">SERVICES</a>
+            <a href="/assessment.html">SNAPSHOT</a>
+            <a href="/contact.html">CONTACT</a>
+        </div>
+
+    </nav>
+
+
+    <section class="content-section" id="services">
+
+        <div class="content-inner">
+
+            <div class="section-heading">
+
+                <div class="kicker">
+                    SECURITY TESTING
+                </div>
+
+                <h1>
+                    Find weaknesses before attackers do.
+                </h1>
+
+                <p>
+                    Security testing helps uncover exploitable weaknesses,
+                    validate controls, and identify where systems are exposed.
+                    We focus on practical findings, business impact, and clear
+                    remediation guidance.
+                </p>
+
+            </div>
+
+
+            <div class="testing-grid">
+
+                <div class="testing-card">
+                    <span class="card-number">01</span>
+                    <h3>Penetration Testing</h3>
+                    <p>
+                        Simulate real-world attack techniques to identify
+                        exploitable weaknesses across systems, applications,
+                        and infrastructure.
+                    </p>
+                </div>
+
+                <div class="testing-card">
+                    <span class="card-number">02</span>
+                    <h3>Web Application Testing</h3>
+                    <p>
+                        Assess web applications for authentication flaws,
+                        access-control issues, injection risks, insecure
+                        configurations, and other common attack paths.
+                    </p>
+                </div>
+
+                <div class="testing-card">
+                    <span class="card-number">03</span>
+                    <h3>API Security Testing</h3>
+                    <p>
+                        Evaluate APIs for broken authorization, weak
+                        authentication, insecure data exposure, improper input
+                        handling, and business-logic weaknesses.
+                    </p>
+                </div>
+
+                <div class="testing-card">
+                    <span class="card-number">04</span>
+                    <h3>Vulnerability Assessments</h3>
+                    <p>
+                        Identify known vulnerabilities and configuration issues,
+                        then prioritize findings based on exploitability and
+                        business impact.
+                    </p>
+                </div>
+
+                <div class="testing-card">
+                    <span class="card-number">05</span>
+                    <h3>Remediation Validation</h3>
+                    <p>
+                        Retest previously identified findings to confirm
+                        vulnerabilities were resolved and remediation is
+                        working as intended.
+                    </p>
+                </div>
+
+                <div class="testing-card">
+                    <span class="card-number">06</span>
+                    <h3>Security Testing Strategy</h3>
+                    <p>
+                        Build a repeatable testing approach based on systems,
+                        risk, release cycles, compliance obligations, and
+                        business priorities.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="dark-section">
+
+        <div class="dark-inner">
+
+            <div class="dark-copy">
+
+                <div class="kicker">
+                    PRACTICAL SECURITY TESTING
+                </div>
+
+                <h2>
+                    Findings you can actually use.
+                </h2>
+
+                <p>
+                    A useful security test should do more than generate a list
+                    of vulnerabilities. We focus on exploitability, business
+                    impact, evidence, and clear next steps so your team knows
+                    what to fix first.
+                </p>
+
+            </div>
+
+
+            <div class="testing-list">
+
+                <div>Penetration testing</div>
+                <div>Web application testing</div>
+
+                <div>API security testing</div>
+                <div>Vulnerability assessments</div>
+
+                <div>Authentication testing</div>
+                <div>Access-control review</div>
+
+                <div>Remediation validation</div>
+                <div>Prioritized findings</div>
+
+                <div>Executive reporting</div>
+                <div>Testing strategy</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="consult-section">
+
+        <div class="consult-inner">
+
+            <div class="kicker">
+                LET'S TALK
+            </div>
+
+            <h2>
+                Test what matters.
+            </h2>
+
+            <p>
+                Whether you need a penetration test, application review,
+                API assessment, vulnerability assessment, or validation of
+                completed remediation, we can help determine the right scope.
+            </p>
+
+            <a href="/contact.html" class="primary-button">
+                BOOK A CONSULTATION →
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        © 2026 The Verdyan Group
+    </footer>
+
+</body>
+</html>
