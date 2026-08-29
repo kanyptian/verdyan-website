@@ -684,7 +684,12 @@
 }
 
 
-  </style>
+  
+/* Social icon links */
+.social-icon { display:inline-flex; align-items:center; justify-content:center; line-height:1; }
+.social-icon svg { display:block; }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+</style>
 </head>
 
 <body>
@@ -700,8 +705,8 @@
 
     <div class="topbar-right">
       <a href="mailto:contact@verdyan.com">✉ contact@verdyan.com</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Instagram</a>
+      <a href="#" class="social-icon" aria-label="LinkedIn"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.1 20.45H3.54V9H7.1v11.45z"/></svg><span class="sr-only">LinkedIn</span></a>
+      <a href="#" class="social-icon" aria-label="Instagram"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span class="sr-only">Instagram</span></a>
     </div>
 
   </div>
