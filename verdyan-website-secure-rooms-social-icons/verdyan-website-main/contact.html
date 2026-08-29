@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | The Verdyan Group</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #15233d;
+        }
+
+
+        /* =========================================
+           TOP CONTACT BAR
+        ========================================== */
+
+        .topbar {
+            background: #111722;
+            color: #ffffff;
+            padding: 13px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .topbar-left,
+        .topbar-right {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .topbar a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .topbar a:hover {
+            color: #d9b64c;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================== */
+
+        .navbar {
+            background: #172236;
+            min-height: 90px;
+            padding: 10px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .brand img {
+            width: 70px;
+            height: 70px;
+            max-width: 70px;
+            max-height: 70px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #d9b64c;
+        }
+
+        .consult-button {
+            border: 1px solid #d9b64c;
+            padding: 12px 20px;
+            color: #d9b64c !important;
+        }
+
+
+        /* =========================================
+           CONTACT HERO
+        ========================================== */
+
+        .contact-hero {
+            min-height: 330px;
+
+            background:
+                radial-gradient(
+                    circle at 25% 50%,
+                    rgba(35, 91, 165, 0.28),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    120deg,
+                    #172b4d,
+                    #091426
+                );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .contact-hero-content {
+            animation: hero-rise 0.8s ease-out both;
+        }
+
+        .contact-hero h1 {
+            font-size: 58px;
+            line-height: 1;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .contact-hero p {
+            font-size: 16px;
+            color: #d9b64c;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        @keyframes hero-rise {
+
+            from {
+                opacity: 0;
+                transform: translateY(45px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================================
+           CONTACT SECTION
+        ========================================== */
+
+        .contact-section {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 80px 40px 100px;
+
+            display: grid;
+            grid-template-columns: 2fr 0.8fr;
+            gap: 90px;
+        }
+
+        .section-label {
+            color: #b68e26;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .form-side h2 {
+            font-size: 38px;
+            line-height: 1.15;
+            margin-bottom: 15px;
+            color: #12213a;
+        }
+
+        .intro {
+            color: #657086;
+            line-height: 1.7;
+            margin-bottom: 45px;
+            max-width: 650px;
+        }
+
+
+        /* =========================================
+           FORM
+        ========================================== */
+
+        .consult-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 35px;
+            row-gap: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #23334e;
+            margin-bottom: 9px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #cbd0d8;
+            padding: 12px 2px;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            color: #15233d;
+            background: transparent;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #9aa2ae;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-bottom-color: #c39b32;
+        }
+
+        .form-group textarea {
+            min-height: 125px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            grid-column: 1 / -1;
+            justify-self: start;
+
+            background: #125bc5;
+            color: #ffffff;
+
+            border: none;
+
+            padding: 16px 26px;
+
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.8px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .submit-button:hover {
+            background: #0d489e;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================
+           CONTACT INFORMATION
+        ========================================== */
+
+        .contact-info {
+            border-left: 1px solid #e2e5ea;
+            padding-left: 45px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #12213a;
+        }
+
+        .info-block {
+            margin-bottom: 35px;
+        }
+
+        .info-block h4 {
+            color: #b68e26;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .info-block p,
+        .info-block a {
+            color: #657086;
+            font-size: 14px;
+            line-height: 1.7;
+            text-decoration: none;
+        }
+
+        .info-block a:hover {
+            color: #125bc5;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================== */
+
+        footer {
+            background: #0e1726;
+            color: #aab2c0;
+            text-align: center;
+            padding: 28px;
+            font-size: 12px;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 800px) {
+
+            .topbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .topbar-left,
+            .topbar-right {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 18px;
+                padding: 15px 6%;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .contact-hero {
+                min-height: 260px;
+            }
+
+            .contact-hero h1 {
+                font-size: 42px;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+                padding: 55px 7%;
+                gap: 55px;
+            }
+
+            .consult-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full,
+            .submit-button {
+                grid-column: 1;
+            }
+
+            .contact-info {
+                border-left: none;
+                border-top: 1px solid #e2e5ea;
+                padding-left: 0;
+                padding-top: 40px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         TOP CONTACT BAR
+    ========================================== -->
+
+    <div class="topbar">
+
+        <div class="topbar-left">
+
+            <span>
+                ☎ 585.746.2293
+            </span>
+
+            <span>
+                ◷ Mon–Fri: 10:00 AM–6:00 PM
+            </span>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <a href="#">
+                LinkedIn
+            </a>
+
+            <a href="#">
+                Instagram
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+
+    <nav class="navbar">
+
+        <a
+            class="brand"
+            href="home.html">
+
+            <img
+                src="Verdyan 2000.png"
+                alt="The Verdyan Group">
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="home.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <a href="home.html#services">
+                Services
+            </a>
+
+            <a href="assessment.html">
+                $99 Assessment
+            </a>
+
+            <a
+                href="contact.html"
+                class="consult-button">
+
+                Book a Consultation
+
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================================
+         ANIMATED CONTACT HERO
+    ========================================== -->
+
+    <section class="contact-hero">
+
+        <div class="contact-hero-content">
+
+            <h1>
+                Contact Us
+            </h1>
+
+            <p>
+                GET IN TOUCH
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================
+         CONTACT AREA
+    ========================================== -->
+
+    <section class="contact-section">
+
+
+        <!-- LEFT SIDE / FORM -->
+
+        <div class="form-side">
+
+
+            <div class="section-label">
+                LEAVE US YOUR INFO
+            </div>
+
+
+            <h2>
+                Tell us what you're trying to solve.
+            </h2>
+
+
+            <p class="intro">
+
+                Whether you need help understanding your compliance
+                obligations, strengthening your security program,
+                preparing for an assessment, or simply figuring out
+                where to begin, we'd be happy to talk.
+
+            </p>
+
+
+
+            <!-- =================================
+                 CONTACT FORM
+            ================================== -->
+
+            <form
+                class="consult-form"
+                id="contact-form">
+
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name *
+                    </label>
+
+                    <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        placeholder="Your name"
+                        autocomplete="name"
+                        required>
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email *
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        placeholder="you@company.com"
+                        autocomplete="email"
+                        required>
+
+                </div>
+
+
+
+                <!-- PHONE NUMBER -->
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        id="phone"
+                        type="tel"
+                        name="phone"
+                        placeholder="(555) 555-5555"
+                        autocomplete="tel">
+
+                </div>
+
+
+
+                <!-- SUBJECT -->
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject *
+                    </label>
+
+                    <input
+                        id="subject"
+                        type="text"
+                        name="subject"
+                        placeholder="How can we help?"
+                        required>
+
+                </div>
+
+
+
+                <!-- MESSAGE -->
+
+                <div class="form-group full">
+
+                    <label for="message">
+                        Message *
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Tell us a little about what you're looking for..."
+                        required></textarea>
+
+                </div>
+
+
+
+                <!-- SEND BUTTON -->
+
+                <button
+                    class="submit-button"
+                    type="submit">
+
+                    SEND MESSAGE →
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+
+
+        <!-- =====================================
+             RIGHT SIDE / CONTACT INFORMATION
+        ====================================== -->
+
+        <aside class="contact-info">
+
+
+            <div class="section-label">
+                CONTACT
+            </div>
+
+
+            <h3>
+                The Verdyan Group
+            </h3>
+
+
+
+            <!-- EMAIL -->
+
+            <div class="info-block">
+
+                <h4>
+                    EMAIL
+                </h4>
+
+                <a href="mailto:contact@verdyan.com">
+                    contact@verdyan.com
+                </a>
+
+            </div>
+
+
+
+            <!-- PHONE -->
+
+            <div class="info-block">
+
+                <h4>
+                    PHONE
+                </h4>
+
+                <p>
+                    Your Phone Number
+                </p>
+
+            </div>
+
+
+
+            <!-- HOURS -->
+
+            <div class="info-block">
+
+                <h4>
+                    HOURS
+                </h4>
+
+                <p>
+                    Monday–Friday
+                    <br>
+                    10:00 AM–6:00 PM
+                </p>
+
+            </div>
+
+
+
+            <!-- CONSULTATIONS -->
+
+            <div class="info-block">
+
+                <h4>
+                    CONSULTATIONS
+                </h4>
+
+                <p>
+                    Virtual consultations are available
+                    for organizations throughout the
+                    United States.
+                </p>
+
+            </div>
+
+
+        </aside>
+
+
+    </section>
+
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer>
+
+        © 2026 The Verdyan Group.
+        Governance • Risk • Compliance • Security
+
+    </footer>
+
+
+</body>
+
+</html>
