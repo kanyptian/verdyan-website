@@ -209,13 +209,47 @@
   </main>
 
 <script>
-  document.getElementById('updatesForm').addEventListener('submit', function (event) {
+  document.getElementById('updatesForm').addEventListener('submit', async function (event) {
     event.preventDefault();
+
     const email = document.getElementById('email').value.trim();
+    const button = this.querySelector('button');
+
     if (!email) return;
-    const subject = encodeURIComponent('Secure Rooms Update List');
-    const body = encodeURIComponent('Please add this email address to the Secure Rooms update list: ' + email);
-    window.location.href = 'mailto:contact@verdyan.com?subject=' + subject + '&body=' + body;
+
+    button.disabled = true;
+    button.textContent = 'SENDING...';
+
+    try {
+      const response = await fetch(
+        'https://awsoryt4sclmal5dz7cffugyh40rovtc.lambda-url.us-east-2.on.aws/',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: 'Secure Rooms Update List',
+            email: email,
+            subject: 'Secure Rooms Update List',
+            message: 'Please add this email address to the Secure Rooms update list.'
+          })
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+
+      this.reset();
+      alert("You're on the list! We'll let you know when Secure Rooms is ready to open.");
+
+    } catch (error) {
+      alert("We couldn't add you to the list. Please try again.");
+    } finally {
+      button.disabled = false;
+      button.textContent = 'KEEP ME UPDATED';
+    }
   });
 </script>
 </body>
