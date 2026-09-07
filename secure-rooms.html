@@ -208,15 +208,15 @@
     </section>
   </main>
 
-  <script>
-    document.getElementById('updatesForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      if (!email) return;
-      const subject = encodeURIComponent('Secure Rooms Update List');
-      const body = encodeURIComponent('Please add this email address to the Secure Rooms update list: ' + email);
-      window.location.href = 'mailto:contact@verdyan.com?subject=' + subject + '&body=' + body;
-    });
-  </script>
+<script>
+  document.getElementById('updatesForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    if (!email) return;
+    const subject = encodeURIComponent('Secure Rooms Update List');
+    const body = encodeURIComponent('Please add this email address to the Secure Rooms update list: ' + email);
+    window.location.href = 'mailto:contact@verdyan.com?subject=' + subject + '&body=' + body;
+  });
+</script>
 </body>
 </html>
