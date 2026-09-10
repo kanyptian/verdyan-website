@@ -254,6 +254,45 @@ h1 {
 
 }
 
+
+/* ===== VERDYAN GLOBAL HAMBURGER MENU ===== */
+.menu-button{
+  width:44px;height:44px;border:1px solid rgba(214,178,94,.55);border-radius:4px;
+  background:transparent;display:inline-flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:5px;cursor:pointer;transition:.25s ease;flex:0 0 auto;
+}
+.menu-button:hover{background:rgba(214,178,94,.08);border-color:#d6b25e}
+.menu-button span{width:18px;height:2px;background:#fff;display:block}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);opacity:0;visibility:hidden;transition:.3s ease;z-index:998}
+.menu-overlay.open{opacity:1;visibility:visible}
+.site-menu{position:fixed;top:0;right:0;width:min(390px,88vw);height:100vh;padding:34px 32px 40px;background:#17191c;color:#fff;box-shadow:-18px 0 45px rgba(0,0,0,.28);transform:translateX(100%);transition:transform .35s cubic-bezier(.77,0,.18,1);z-index:999;overflow-y:auto}
+.site-menu.open{transform:translateX(0)}
+.menu-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.menu-title{color:#d6b25e;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.menu-close{width:38px;height:38px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font-size:23px;line-height:1;cursor:pointer}
+.menu-close:hover{color:#d6b25e;border-color:#d6b25e}
+.menu-item{border-bottom:1px solid rgba(255,255,255,.09)}
+.menu-link,.menu-expand{width:100%;min-height:56px;display:flex;align-items:center;justify-content:space-between;color:#fff;background:transparent;border:0;font-family:inherit;font-size:14px;font-weight:600;text-align:left;cursor:pointer}
+.menu-link:hover,.menu-expand:hover,.submenu a:hover{color:#d6b25e}
+.menu-arrow{color:#d6b25e;transition:transform .25s ease}
+.menu-item.expanded .menu-arrow{transform:rotate(90deg)}
+.submenu{display:none;padding:0 0 14px 14px}
+.menu-item.expanded .submenu{display:block}
+.submenu a{display:block;padding:9px 0;color:#bfc4ca;font-size:13px;line-height:1.4}
+.menu-coming{display:block;padding:8px 0 13px 14px;color:#777e86;font-size:11px;line-height:1.5}
+.menu-secure{color:#d6b25e}
+body.menu-open{overflow:hidden}
+.site-copyright{background:#111214;color:#aeb3ba;text-align:center;padding:24px 7%;font-size:12px;letter-spacing:.04em}
+@media(max-width:800px){
+  .menu-button{display:inline-flex!important;width:42px;height:42px;margin-right:10px;flex:0 0 42px}
+  .nav-links{display:flex;align-items:center}
+  .consult-button{display:inline-block!important}
+}
+@media(max-width:420px){
+  .menu-button{width:38px;height:38px;flex-basis:38px;margin-right:7px}
+  .site-menu{width:92vw;padding:26px 24px 34px}
+}
+
 </style>
 </head>
 
@@ -272,7 +311,51 @@ h1 {
     <a href="/contact.html">CONTACT</a>
 </div>
 
+<button class="menu-button" id="menuButton" type="button" aria-label="Open site menu" aria-controls="siteMenu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+<aside class="site-menu" id="siteMenu" aria-hidden="true">
+  <div class="menu-header">
+    <div class="menu-title">Explore Verdyan</div>
+    <button class="menu-close" id="menuClose" type="button" aria-label="Close site menu">×</button>
+  </div>
+
+  <div class="menu-item">
+    <button class="menu-expand" type="button" aria-expanded="false">
+      <span>Services</span><span class="menu-arrow">›</span>
+    </button>
+    <div class="submenu">
+      <a href="governance.html">Governance &amp; vCISO</a>
+      <a href="risk.html">Risk Management</a>
+      <a href="compliance.html">Compliance &amp; AI Governance</a>
+      <a href="testing.html">Security Testing</a>
+      <a href="assessment.html">Security Snapshots</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <button class="menu-expand" type="button" aria-expanded="false">
+      <span>Use Cases</span><span class="menu-arrow">›</span>
+    </button>
+    <div class="submenu">
+      <span class="menu-coming">SOC 2 Readiness — coming soon</span>
+      <span class="menu-coming">Security Program Mapping — coming soon</span>
+      <span class="menu-coming">Sensitive Data &amp; Collaboration — coming soon</span>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <span class="menu-link" style="color:#8b9198;cursor:default">
+      <span>Insights</span><span style="font-size:10px;color:#d6b25e">COMING SOON</span>
+    </span>
+  </div>
+
+  <div class="menu-item"><a class="menu-link menu-secure" href="secure-rooms.html"><span>Secure Rooms</span><span>→</span></a></div>
+  <div class="menu-item"><a class="menu-link" href="about.html"><span>About Us</span><span>→</span></a></div>
+  <div class="menu-item"><a class="menu-link" href="contact.html"><span>Contact</span><span>→</span></a></div>
+</aside>
+
 
 
 <main class="success-page">
@@ -403,5 +486,35 @@ RETURN HOME →
 
 </main>
 
+
+<script>
+(function(){
+  const b=document.getElementById('menuButton'),
+        m=document.getElementById('siteMenu'),
+        o=document.getElementById('menuOverlay'),
+        c=document.getElementById('menuClose');
+  if(!b||!m||!o||!c) return;
+
+  function openMenu(){
+    m.classList.add('open');o.classList.add('open');document.body.classList.add('menu-open');
+    m.setAttribute('aria-hidden','false');o.setAttribute('aria-hidden','false');b.setAttribute('aria-expanded','true');
+    c.focus();
+  }
+  function closeMenu(){
+    m.classList.remove('open');o.classList.remove('open');document.body.classList.remove('menu-open');
+    m.setAttribute('aria-hidden','true');o.setAttribute('aria-hidden','true');b.setAttribute('aria-expanded','false');
+  }
+  b.addEventListener('click',openMenu);c.addEventListener('click',closeMenu);o.addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')) closeMenu();});
+  document.querySelectorAll('.menu-expand').forEach(function(x){
+    x.addEventListener('click',function(){
+      const i=x.closest('.menu-item'),v=i.classList.toggle('expanded');
+      x.setAttribute('aria-expanded',v?'true':'false');
+    });
+  });
+})();
+</script>
+
+<footer class="site-copyright">© 2026 The Verdyan Group™. All rights reserved.</footer>
 </body>
 </html>

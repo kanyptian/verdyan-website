@@ -1,256 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secure Rooms | The Verdyan Group</title>
-  <meta name="description" content="Secure Rooms by The Verdyan Group — a private, security-focused collaboration environment currently in development.">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html, body { min-height:100%; }
-    body {
-      min-height:100vh;
-      font-family: Arial, Helvetica, sans-serif;
-      color:#f7f5ef;
-      background:#090909;
-      overflow-x:hidden;
-    }
-    body::before {
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background:
-        radial-gradient(circle at 50% 25%, rgba(255,255,255,.07), transparent 28%),
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-      background-size:auto, 46px 46px, 46px 46px;
-      mask-image:linear-gradient(to bottom, black, transparent 78%);
-    }
-    .topbar {
-      width:100%;
-      min-height:38px;
-      padding:8px 5vw;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:18px;
-      border-bottom:1px solid rgba(255,255,255,.09);
-      color:#aaa;
-      font-size:12px;
-      letter-spacing:.04em;
-      position:relative;
-      z-index:3;
-    }
-    .topbar a { color:#d8d8d8; text-decoration:none; }
-    .nav {
-      width:100%;
-      padding:16px 5vw;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      position:relative;
-      z-index:3;
-    }
-    .brand img { width:76px; height:76px; object-fit:contain; display:block; }
-    .back {
-      color:#ddd;
-      text-decoration:none;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      font-size:11px;
-      border-bottom:1px solid rgba(255,255,255,.35);
-      padding-bottom:5px;
-    }
-    main {
-      position:relative;
-      z-index:2;
-      min-height:calc(100vh - 150px);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:35px 24px 70px;
-    }
-    .hero {
-      width:min(900px, 100%);
-      text-align:center;
-      animation:fadeUp 1s ease both;
-    }
-    .crest-wrap {
-      width:150px;
-      height:150px;
-      margin:0 auto 18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      filter:drop-shadow(0 0 28px rgba(255,255,255,.08));
-    }
-    .crest-wrap img { width:100%; height:100%; object-fit:contain; }
-    .status {
-      display:inline-flex;
-      align-items:center;
-      gap:9px;
-      margin-bottom:24px;
-      color:#bcbcbc;
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.24em;
-      text-transform:uppercase;
-    }
-    .status::before { content:""; width:6px; height:6px; border-radius:50%; background:#eee; box-shadow:0 0 12px rgba(255,255,255,.65); }
-    h1 {
-      font-size:clamp(3rem, 8vw, 7.2rem);
-      font-weight:400;
-      line-height:.92;
-      letter-spacing:.075em;
-      margin-bottom:25px;
-    }
-    .headline {
-      max-width:760px;
-      margin:0 auto 20px;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size:clamp(1.45rem, 3vw, 2.35rem);
-      line-height:1.25;
-      font-weight:400;
-      color:#f0eee8;
-    }
-    .copy {
-      max-width:700px;
-      margin:0 auto;
-      color:#aaa;
-      font-size:15px;
-      line-height:1.8;
-    }
-    .divider { width:64px; height:1px; background:#666; margin:31px auto; }
-    .signup-title {
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.2em;
-      color:#ddd;
-      margin-bottom:13px;
-    }
-    .signup-copy { color:#8f8f8f; font-size:13px; margin-bottom:18px; }
-    form {
-      width:min(560px, 100%);
-      margin:0 auto;
-      display:flex;
-      border:1px solid #555;
-      background:rgba(255,255,255,.025);
-    }
-    input {
-      flex:1;
-      min-width:0;
-      border:0;
-      outline:0;
-      padding:17px 18px;
-      color:#fff;
-      background:transparent;
-      font-size:14px;
-    }
-    input::placeholder { color:#707070; }
-    button {
-      border:0;
-      border-left:1px solid #555;
-      padding:0 23px;
-      background:#C9A227;
-      color:#111;
-      cursor:pointer;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-      font-size:10px;
-    }
-    button:hover { background:#E0BD4F; }
-    .privacy { margin-top:12px; color:#626262; font-size:10px; letter-spacing:.04em; }
-    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-    @media (max-width:700px) {
-      .topbar { justify-content:center; flex-wrap:wrap; text-align:center; }
-      .topbar .hours { display:none; }
-      .nav { padding-top:12px; }
-      .brand img { width:62px; height:62px; }
-      main { padding-top:18px; }
-      .crest-wrap { width:118px; height:118px; }
-      h1 { font-size:clamp(2.6rem, 13vw, 4.2rem); letter-spacing:.045em; }
-      .copy { font-size:14px; line-height:1.7; }
-      form { flex-direction:column; border:0; gap:10px; background:transparent; }
-      input { border:1px solid #555; width:100%; }
-      button { min-height:50px; border:0; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/favicon.png">
+<title>Verdyan Secure Rooms | Private Collaboration, Reimagined</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;min-height:100%;background:#090b0f;color:#fff;font-family:Arial,Helvetica,sans-serif}
+a{color:inherit;text-decoration:none}
+body{overflow-x:hidden}
+.topbar{min-height:44px;background:#0b0d10;color:#d9dde3;display:flex;align-items:center;justify-content:space-between;padding:10px 7%;font-size:12px;border-bottom:1px solid rgba(255,255,255,.07)}
+.topbar-left,.topbar-right{display:flex;gap:22px;align-items:center}
+.secure-nav{min-height:88px;display:flex;align-items:center;justify-content:space-between;padding:12px 7%;background:rgba(11,13,16,.94);border-bottom:1px solid rgba(255,255,255,.08);position:relative;z-index:20}
+.secure-brand img{width:66px;height:66px;object-fit:contain;display:block}
+.secure-nav-actions{display:flex;align-items:center;gap:12px}
+.back-link{font-size:13px;color:#c7ccd3}
+.back-link:hover{color:#d6b25e}
+.secure-hero{position:relative;min-height:calc(100vh - 132px);display:flex;align-items:center;justify-content:center;padding:80px 7%;overflow:hidden;background:
+radial-gradient(circle at 72% 25%,rgba(24,72,140,.30),transparent 30%),
+radial-gradient(circle at 22% 75%,rgba(214,178,94,.10),transparent 26%),
+linear-gradient(180deg,#0b0f16 0%,#090b0f 70%,#07080a 100%)}
+.secure-hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent)}
+.hero-inner{position:relative;z-index:2;width:min(1180px,100%);display:grid;grid-template-columns:1.2fr .8fr;gap:70px;align-items:center}
+.status{display:inline-flex;align-items:center;gap:9px;color:#d6b25e;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:22px}
+.status:before{content:"";width:7px;height:7px;border-radius:50%;background:#d6b25e;box-shadow:0 0 16px rgba(214,178,94,.7)}
+.secure-copy h1{font-size:clamp(3rem,7vw,6.8rem);font-weight:400;line-height:.92;letter-spacing:.03em;margin-bottom:26px}
+.secure-copy h1 span{display:block;color:#d6b25e;font-weight:600}
+.secure-copy .lead{font-size:clamp(1.25rem,2.3vw,2rem);line-height:1.3;max-width:760px;margin-bottom:18px}
+.secure-copy .sub{color:#aeb6c1;font-size:16px;line-height:1.7;max-width:700px}
+.signup-card{background:rgba(17,21,28,.78);border:1px solid rgba(255,255,255,.10);padding:34px;backdrop-filter:blur(10px);box-shadow:0 30px 60px rgba(0,0,0,.32)}
+.signup-card .eyebrow{color:#d6b25e;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:14px}
+.signup-card h2{font-size:28px;line-height:1.15;margin-bottom:13px}
+.signup-card p{color:#aeb6c1;font-size:14px;line-height:1.65;margin-bottom:22px}
+#updatesForm{display:flex;flex-direction:column;gap:12px}
+#email{width:100%;padding:15px 16px;background:#0b0f14;border:1px solid #333b45;color:#fff;font-size:15px;outline:none}
+#email:focus{border-color:#d6b25e}
+#updatesForm button{padding:15px 18px;border:0;background:#173f78;color:#fff;font-size:12px;font-weight:700;letter-spacing:.08em;cursor:pointer}
+#updatesForm button:hover{background:#245797}
+.mini-note{margin-top:14px;color:#727b86;font-size:11px;line-height:1.5}
+.site-copyright{background:#07080a;color:#828a94;text-align:center;padding:24px 7%;font-size:12px;letter-spacing:.04em;border-top:1px solid rgba(255,255,255,.07)}
+
+/* ===== VERDYAN GLOBAL HAMBURGER MENU ===== */
+.menu-button{
+  width:44px;height:44px;border:1px solid rgba(214,178,94,.55);border-radius:4px;
+  background:transparent;display:inline-flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:5px;cursor:pointer;transition:.25s ease;flex:0 0 auto;
+}
+.menu-button:hover{background:rgba(214,178,94,.08);border-color:#d6b25e}
+.menu-button span{width:18px;height:2px;background:#fff;display:block}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);opacity:0;visibility:hidden;transition:.3s ease;z-index:998}
+.menu-overlay.open{opacity:1;visibility:visible}
+.site-menu{position:fixed;top:0;right:0;width:min(390px,88vw);height:100vh;padding:34px 32px 40px;background:#17191c;color:#fff;box-shadow:-18px 0 45px rgba(0,0,0,.28);transform:translateX(100%);transition:transform .35s cubic-bezier(.77,0,.18,1);z-index:999;overflow-y:auto}
+.site-menu.open{transform:translateX(0)}
+.menu-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.menu-title{color:#d6b25e;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.menu-close{width:38px;height:38px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font-size:23px;line-height:1;cursor:pointer}
+.menu-close:hover{color:#d6b25e;border-color:#d6b25e}
+.menu-item{border-bottom:1px solid rgba(255,255,255,.09)}
+.menu-link,.menu-expand{width:100%;min-height:56px;display:flex;align-items:center;justify-content:space-between;color:#fff;background:transparent;border:0;font-family:inherit;font-size:14px;font-weight:600;text-align:left;cursor:pointer}
+.menu-link:hover,.menu-expand:hover,.submenu a:hover{color:#d6b25e}
+.menu-arrow{color:#d6b25e;transition:transform .25s ease}
+.menu-item.expanded .menu-arrow{transform:rotate(90deg)}
+.submenu{display:none;padding:0 0 14px 14px}
+.menu-item.expanded .submenu{display:block}
+.submenu a{display:block;padding:9px 0;color:#bfc4ca;font-size:13px;line-height:1.4}
+.menu-coming{display:block;padding:8px 0 13px 14px;color:#777e86;font-size:11px;line-height:1.5}
+.menu-secure{color:#d6b25e}
+body.menu-open{overflow:hidden}
+.site-copyright{background:#111214;color:#aeb3ba;text-align:center;padding:24px 7%;font-size:12px;letter-spacing:.04em}
+@media(max-width:800px){
+  .menu-button{display:inline-flex!important;width:42px;height:42px;margin-right:10px;flex:0 0 42px}
+  .nav-links{display:flex;align-items:center}
+  .consult-button{display:inline-block!important}
+}
+@media(max-width:420px){
+  .menu-button{width:38px;height:38px;flex-basis:38px;margin-right:7px}
+  .site-menu{width:92vw;padding:26px 24px 34px}
+}
+
+@media(max-width:800px){
+  .topbar-right{display:none}
+  .secure-nav{padding:10px 6%}
+  .secure-brand img{width:56px;height:56px}
+  .secure-nav-actions .back-link{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:42px}
+  .secure-hero{min-height:auto;padding:64px 7% 72px}
+  .secure-copy h1{font-size:clamp(3rem,14vw,4.8rem)}
+  .signup-card{padding:26px 22px}
+}
+</style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="hours">☎ 585.746.2293 &nbsp;&nbsp; ◷ Mon–Fri: 10:00 AM–6:00 PM</div>
-    <a href="mailto:contact@verdyan.com">✉ contact@verdyan.com</a>
-  </div>
-  <nav class="nav">
-    <a class="brand" href="/" aria-label="Return to Verdyan"><img src="/Verdyan%202000.png" alt="The Verdyan Group"></a>
-    <a class="back" href="/">← Return to Verdyan</a>
-  </nav>
+<div class="topbar">
+  <div class="topbar-left"><span>☎ 585.746.2293</span><span>◷ Mon–Fri: 10:00 AM–6:00 PM</span></div>
+  <div class="topbar-right"><a href="mailto:contact@verdyan.com">✉ contact@verdyan.com</a></div>
+</div>
 
-  <main>
-    <section class="hero">
-      <div class="crest-wrap"><img src="/Verdyan%202000.png" alt="Verdyan crest"></div>
+<nav class="secure-nav">
+  <a class="secure-brand" href="index.html"><img src="Verdyan 2000.png" alt="Verdyan Group"></a>
+  <div class="secure-nav-actions">
+    <a class="back-link" href="home.html">GRC Home</a>
+    <button class="menu-button" id="menuButton" type="button" aria-label="Open site menu" aria-controls="siteMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+<aside class="site-menu" id="siteMenu" aria-hidden="true">
+  <div class="menu-header">
+    <div class="menu-title">Explore Verdyan</div>
+    <button class="menu-close" id="menuClose" type="button" aria-label="Close site menu">×</button>
+  </div>
+
+  <div class="menu-item">
+    <button class="menu-expand" type="button" aria-expanded="false">
+      <span>Services</span><span class="menu-arrow">›</span>
+    </button>
+    <div class="submenu">
+      <a href="governance.html">Governance &amp; vCISO</a>
+      <a href="risk.html">Risk Management</a>
+      <a href="compliance.html">Compliance &amp; AI Governance</a>
+      <a href="testing.html">Security Testing</a>
+      <a href="assessment.html">Security Snapshots</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <button class="menu-expand" type="button" aria-expanded="false">
+      <span>Use Cases</span><span class="menu-arrow">›</span>
+    </button>
+    <div class="submenu">
+      <span class="menu-coming">SOC 2 Readiness — coming soon</span>
+      <span class="menu-coming">Security Program Mapping — coming soon</span>
+      <span class="menu-coming">Sensitive Data &amp; Collaboration — coming soon</span>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <span class="menu-link" style="color:#8b9198;cursor:default">
+      <span>Insights</span><span style="font-size:10px;color:#d6b25e">COMING SOON</span>
+    </span>
+  </div>
+
+  <div class="menu-item"><a class="menu-link menu-secure" href="secure-rooms.html"><span>Secure Rooms</span><span>→</span></a></div>
+  <div class="menu-item"><a class="menu-link" href="about.html"><span>About Us</span><span>→</span></a></div>
+  <div class="menu-item"><a class="menu-link" href="contact.html"><span>Contact</span><span>→</span></a></div>
+</aside>
+
+
+<section class="secure-hero">
+  <div class="hero-inner">
+    <div class="secure-copy">
       <div class="status">In Development</div>
-      <h1>SECURE ROOMS</h1>
-      <h2 class="headline">A private space for the conversations that shouldn't leave the room.</h2>
-      <p class="copy">
-        Secure Rooms is the next evolution of The Verdyan Group's commitment to security—extending protection beyond governance, risk, and compliance into the spaces where sensitive work actually happens. We're building a secure environment designed to give organizations greater confidence in how their teams communicate, collaborate, and share.
-      </p>
-      <div class="divider"></div>
-      <div class="signup-title">Be among the first to know</div>
-      <p class="signup-copy">Join the update list and we'll let you know when Secure Rooms is ready to open.</p>
+      <h1>SECURE <span>ROOMS</span></h1>
+      <div class="lead">A private space for the conversations that shouldn’t leave the room.</div>
+      <div class="sub">Secure Rooms is being built as a more controlled, more intentional way to collaborate around sensitive work — with privacy, access, and experience designed together from the start.</div>
+    </div>
+
+    <div class="signup-card">
+      <div class="eyebrow">Opening Updates</div>
+      <h2>Be first through the door.</h2>
+      <p>Join the update list for development news, early access announcements, and the first look at Verdyan Secure Rooms.</p>
       <form id="updatesForm">
-        <input id="email" name="email" type="email" autocomplete="email" placeholder="Your email address" required aria-label="Email address">
-        <button type="submit">Keep Me Updated</button>
+        <input id="email" type="email" placeholder="you@company.com" aria-label="Email address" required>
+        <button type="submit">KEEP ME UPDATED</button>
       </form>
-      <p class="privacy">No noise. Just meaningful Secure Rooms updates.</p>
-    </section>
-  </main>
+      <div class="mini-note">No newsletter noise. Just Secure Rooms updates when there is something worth sharing.</div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-copyright">© 2026 The Verdyan Group™. All rights reserved.</footer>
 
 <script>
-  document.getElementById('updatesForm').addEventListener('submit', async function (event) {
-    event.preventDefault();
-
-    const email = document.getElementById('email').value.trim();
-    const button = this.querySelector('button');
-
-    if (!email) return;
-
-    button.disabled = true;
-    button.textContent = 'SENDING...';
-
-    try {
-      const response = await fetch(
-        'https://awsoryt4sclmal5dz7cffugyh40rovtc.lambda-url.us-east-2.on.aws/',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            name: 'Secure Rooms Update List',
-            email: email,
-            subject: 'Secure Rooms Update List',
-            message: 'Please add this email address to the Secure Rooms update list.'
-          })
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error('Request failed');
-      }
-
-      this.reset();
-      alert("You're on the list! We'll let you know when Secure Rooms is ready to open.");
-
-    } catch (error) {
-      alert("We couldn't add you to the list. Please try again.");
-    } finally {
-      button.disabled = false;
-      button.textContent = 'KEEP ME UPDATED';
-    }
-  });
+document.getElementById('updatesForm').addEventListener('submit', async function(event){
+  event.preventDefault();
+  const email=document.getElementById('email').value.trim();
+  const button=this.querySelector('button');
+  if(!email) return;
+  button.disabled=true;button.textContent='SENDING...';
+  try{
+    const response=await fetch('https://awsoryt4sclmal5dz7cffugyh40rovtc.lambda-url.us-east-2.on.aws/',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        name:'Secure Rooms Update List',
+        email:email,
+        subject:'Secure Rooms Update List',
+        message:'Please add this email address to the Secure Rooms update list.'
+      })
+    });
+    if(!response.ok) throw new Error('Request failed');
+    this.reset();
+    alert("You're on the list! We'll let you know when Secure Rooms is ready to open.");
+  }catch(error){
+    alert("We couldn't add you to the list. Please try again.");
+  }finally{
+    button.disabled=false;button.textContent='KEEP ME UPDATED';
+  }
+});
 </script>
+
+<script>
+(function(){
+  const b=document.getElementById('menuButton'),
+        m=document.getElementById('siteMenu'),
+        o=document.getElementById('menuOverlay'),
+        c=document.getElementById('menuClose');
+  if(!b||!m||!o||!c) return;
+
+  function openMenu(){
+    m.classList.add('open');o.classList.add('open');document.body.classList.add('menu-open');
+    m.setAttribute('aria-hidden','false');o.setAttribute('aria-hidden','false');b.setAttribute('aria-expanded','true');
+    c.focus();
+  }
+  function closeMenu(){
+    m.classList.remove('open');o.classList.remove('open');document.body.classList.remove('menu-open');
+    m.setAttribute('aria-hidden','true');o.setAttribute('aria-hidden','true');b.setAttribute('aria-expanded','false');
+  }
+  b.addEventListener('click',openMenu);c.addEventListener('click',closeMenu);o.addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')) closeMenu();});
+  document.querySelectorAll('.menu-expand').forEach(function(x){
+    x.addEventListener('click',function(){
+      const i=x.closest('.menu-item'),v=i.classList.toggle('expanded');
+      x.setAttribute('aria-expanded',v?'true':'false');
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
