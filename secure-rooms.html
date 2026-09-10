@@ -89,6 +89,149 @@ body.menu-open{overflow:hidden}
   .secure-copy h1{font-size:clamp(3rem,14vw,4.8rem)}
   .signup-card{padding:26px 22px}
 }
+
+/* ===== SECURE ROOMS CINEMATIC ENVIRONMENT ===== */
+.secure-hero{
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 70% 22%,rgba(34,91,143,.20),transparent 28%),
+    radial-gradient(circle at 20% 82%,rgba(54,93,66,.20),transparent 30%),
+    linear-gradient(180deg,#080c12 0%,#090d10 58%,#070907 100%);
+}
+.secure-hero:before{
+  opacity:.34;
+  z-index:-2;
+}
+.planet-scene{
+  position:absolute;
+  width:min(58vw,820px);
+  aspect-ratio:1;
+  left:44%;
+  top:49%;
+  transform:translate(-50%,-50%);
+  z-index:-1;
+  pointer-events:none;
+}
+.planet-glow{
+  position:absolute;
+  inset:5%;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(68,124,166,.20) 0%,rgba(45,93,132,.10) 42%,transparent 72%);
+  filter:blur(18px);
+  transform:scale(1.18);
+}
+.planet{
+  position:absolute;
+  inset:13%;
+  border-radius:50%;
+  background:
+    radial-gradient(ellipse at 35% 25%,rgba(150,183,174,.32),transparent 12%),
+    radial-gradient(ellipse at 62% 58%,rgba(76,116,91,.34),transparent 17%),
+    radial-gradient(ellipse at 43% 68%,rgba(73,109,82,.26),transparent 14%),
+    radial-gradient(circle at 35% 30%,#536c76 0%,#243b49 35%,#101c28 68%,#060b10 100%);
+  box-shadow:
+    inset -55px -30px 85px rgba(0,0,0,.78),
+    inset 20px 8px 40px rgba(121,177,203,.16),
+    0 0 90px rgba(57,108,148,.18);
+  opacity:.78;
+}
+.botanical{
+  position:absolute;
+  bottom:-22px;
+  width:260px;
+  height:430px;
+  z-index:1;
+  opacity:.55;
+  filter:drop-shadow(0 10px 18px rgba(0,0,0,.5));
+  pointer-events:none;
+}
+.botanical-left{left:-35px;transform:rotate(-5deg)}
+.botanical-right{right:-40px;transform:scaleX(-1) rotate(-7deg)}
+.botanical .stem{
+  position:absolute;
+  bottom:0;
+  width:5px;
+  border-radius:100%;
+  background:linear-gradient(#263e2b,#101a13);
+  transform-origin:bottom center;
+}
+.botanical .s1,.botanical .s3{left:92px;height:390px;transform:rotate(12deg)}
+.botanical .s2,.botanical .s4{left:145px;height:330px;transform:rotate(-12deg)}
+.botanical .leaf{
+  position:absolute;
+  width:78px;
+  height:135px;
+  border-radius:85% 10% 80% 15%;
+  background:linear-gradient(145deg,#31553b,#14251a 68%);
+  box-shadow:inset 10px 8px 20px rgba(100,145,94,.08);
+}
+.botanical .l1,.botanical .l5{left:55px;top:65px;transform:rotate(-34deg)}
+.botanical .l2,.botanical .l6{left:125px;top:115px;transform:scaleX(-1) rotate(-28deg)}
+.botanical .l3,.botanical .l7{left:40px;top:205px;transform:rotate(-48deg) scale(.9)}
+.botanical .l4,.botanical .l8{left:145px;top:240px;transform:scaleX(-1) rotate(-40deg) scale(.85)}
+.secure-copy h1{
+  font-size:clamp(2.65rem,5.2vw,5.25rem);
+  line-height:.94;
+  margin-bottom:28px;
+  text-shadow:0 4px 24px rgba(0,0,0,.45);
+}
+.secure-copy h1 span{color:#d6b25e}
+.secure-copy .lead{
+  max-width:720px;
+  font-size:clamp(1.2rem,2vw,1.8rem);
+}
+.planet-word{
+  position:relative;
+  display:inline-block;
+  color:#aeb6c1;
+  margin:0 .15em;
+}
+.planet-word:before,
+.planet-word:after{
+  content:"";
+  position:absolute;
+  left:-4%;
+  width:108%;
+  height:2px;
+  background:#d6b25e;
+  opacity:.95;
+  transform-origin:center;
+}
+.planet-word:before{top:48%;transform:rotate(-7deg)}
+.planet-word:after{top:57%;transform:rotate(5deg)}
+.room-word{
+  color:#fff;
+  font-weight:700;
+  white-space:nowrap;
+}
+.signup-card{
+  position:relative;
+  z-index:3;
+  background:rgba(12,17,22,.76);
+}
+@media(max-width:800px){
+  .planet-scene{
+    width:115vw;
+    left:58%;
+    top:31%;
+    opacity:.62;
+  }
+  .botanical{
+    width:190px;
+    height:330px;
+    opacity:.42;
+  }
+  .botanical-left{left:-80px}
+  .botanical-right{right:-85px}
+  .secure-copy h1{
+    font-size:clamp(2.8rem,12vw,4.25rem);
+  }
+  .secure-copy .lead{
+    font-size:1.25rem;
+    line-height:1.42;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -98,9 +241,8 @@ body.menu-open{overflow:hidden}
 </div>
 
 <nav class="secure-nav">
-  <a class="secure-brand" href="index.html"><img src="Verdyan 2000.png" alt="Verdyan Group"></a>
+  <a class="secure-brand" href="index.html"><img src="/Verdyan 2000.png" alt="Verdyan Group"></a>
   <div class="secure-nav-actions">
-    <a class="back-link" href="home.html">GRC Home</a>
     <button class="menu-button" id="menuButton" type="button" aria-label="Open site menu" aria-controls="siteMenu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -150,11 +292,27 @@ body.menu-open{overflow:hidden}
 
 
 <section class="secure-hero">
+  <div class="planet-scene" aria-hidden="true">
+    <div class="planet-glow"></div>
+    <div class="planet"></div>
+  </div>
+  <div class="botanical botanical-left" aria-hidden="true">
+    <span class="stem s1"></span><span class="leaf l1"></span><span class="leaf l2"></span>
+    <span class="stem s2"></span><span class="leaf l3"></span><span class="leaf l4"></span>
+  </div>
+  <div class="botanical botanical-right" aria-hidden="true">
+    <span class="stem s3"></span><span class="leaf l5"></span><span class="leaf l6"></span>
+    <span class="stem s4"></span><span class="leaf l7"></span><span class="leaf l8"></span>
+  </div>
   <div class="hero-inner">
     <div class="secure-copy">
       <div class="status">In Development</div>
       <h1>SECURE <span>ROOMS</span></h1>
-      <div class="lead">A private space for the conversations that shouldn’t leave the room.</div>
+      <div class="lead">
+        A private space for the conversations that shouldn’t leave the
+        <span class="planet-word">planet</span>
+        <span class="room-word">room.</span>
+      </div>
       <div class="sub">Secure Rooms is being built as a more controlled, more intentional way to collaborate around sensitive work — with privacy, access, and experience designed together from the start.</div>
     </div>
 
