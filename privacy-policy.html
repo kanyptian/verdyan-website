@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+    <title>Privacy Policy | The Verdyan Group</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #15233d;
+        }
+
+
+        /* =========================================
+           TOP CONTACT BAR
+        ========================================== */
+
+        .topbar {
+            background: #111722;
+            color: #ffffff;
+            padding: 13px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .topbar-left,
+        .topbar-right {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .topbar a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .topbar a:hover {
+            color: #d9b64c;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================== */
+
+        .navbar {
+            background: #172236;
+            min-height: 90px;
+            padding: 10px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .brand img {
+            width: 70px;
+            height: 70px;
+            max-width: 70px;
+            max-height: 70px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .nav-links a:hover {
+            color: #d9b64c;
+        }
+
+        .consult-button {
+            border: 1px solid #d9b64c;
+            padding: 12px 20px;
+            color: #d9b64c !important;
+        }
+
+
+        /* =========================================
+           CONTACT HERO
+        ========================================== */
+
+        .contact-hero {
+            min-height: 330px;
+
+            background:
+                radial-gradient(
+                    circle at 25% 50%,
+                    rgba(35, 91, 165, 0.28),
+                    transparent 40%
+                ),
+                linear-gradient(
+                    120deg,
+                    #172b4d,
+                    #091426
+                );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .contact-hero-content {
+            animation: hero-rise 0.8s ease-out both;
+        }
+
+        .contact-hero h1 {
+            font-size: 58px;
+            line-height: 1;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .contact-hero p {
+            font-size: 16px;
+            color: #d9b64c;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        @keyframes hero-rise {
+
+            from {
+                opacity: 0;
+                transform: translateY(45px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =========================================
+           CONTACT SECTION
+        ========================================== */
+
+        .contact-section {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 80px 40px 100px;
+
+            display: grid;
+            grid-template-columns: 2fr 0.8fr;
+            gap: 90px;
+        }
+
+        .section-label {
+            color: #b68e26;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .form-side h2 {
+            font-size: 38px;
+            line-height: 1.15;
+            margin-bottom: 15px;
+            color: #12213a;
+        }
+
+        .intro {
+            color: #657086;
+            line-height: 1.7;
+            margin-bottom: 45px;
+            max-width: 650px;
+        }
+
+
+        /* =========================================
+           FORM
+        ========================================== */
+
+        .consult-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 35px;
+            row-gap: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #23334e;
+            margin-bottom: 9px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #cbd0d8;
+            padding: 12px 2px;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            color: #15233d;
+            background: transparent;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #9aa2ae;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-bottom-color: #c39b32;
+        }
+
+        .form-group textarea {
+            min-height: 125px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            grid-column: 1 / -1;
+            justify-self: start;
+
+            background: #125bc5;
+            color: #ffffff;
+
+            border: none;
+
+            padding: 16px 26px;
+
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.8px;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+        }
+
+        .submit-button:hover {
+            background: #0d489e;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================
+           CONTACT INFORMATION
+        ========================================== */
+
+        .contact-info {
+            border-left: 1px solid #e2e5ea;
+            padding-left: 45px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #12213a;
+        }
+
+        .info-block {
+            margin-bottom: 35px;
+        }
+
+        .info-block h4 {
+            color: #b68e26;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+
+        .snail-mail-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .snail-mail-icon { flex: 0 0 auto; display: inline-block; }
+
+        .info-block p,
+        .info-block a {
+            color: #657086;
+            font-size: 14px;
+            line-height: 1.7;
+            text-decoration: none;
+        }
+
+        .info-block a:hover {
+            color: #125bc5;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================== */
+
+        footer {
+            background: #0e1726;
+            color: #aab2c0;
+            text-align: center;
+            padding: 28px;
+            font-size: 12px;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 800px) {
+
+            .topbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .topbar-left,
+            .topbar-right {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 18px;
+                padding: 15px 6%;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .contact-hero {
+                min-height: 260px;
+            }
+
+            .contact-hero h1 {
+                font-size: 42px;
+            }
+
+            .contact-section {
+                grid-template-columns: 1fr;
+                padding: 55px 7%;
+                gap: 55px;
+            }
+
+            .consult-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full,
+            .submit-button {
+                grid-column: 1;
+            }
+
+            .contact-info {
+                border-left: none;
+                border-top: 1px solid #e2e5ea;
+                padding-left: 0;
+                padding-top: 40px;
+            }
+        }
+
+    
+/* ===== VERDYAN GLOBAL HAMBURGER MENU ===== */
+.menu-button{
+  width:44px;height:44px;border:1px solid rgba(214,178,94,.55);border-radius:4px;
+  background:transparent;display:inline-flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:5px;cursor:pointer;transition:.25s ease;flex:0 0 auto;
+}
+.menu-button:hover{background:rgba(214,178,94,.08);border-color:#d6b25e}
+.menu-button span{width:18px;height:2px;background:#fff;display:block}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);opacity:0;visibility:hidden;transition:.3s ease;z-index:998}
+.menu-overlay.open{opacity:1;visibility:visible}
+.site-menu{position:fixed;top:0;right:0;width:min(390px,88vw);height:100vh;padding:34px 32px 40px;background:#17191c;color:#fff;box-shadow:-18px 0 45px rgba(0,0,0,.28);transform:translateX(100%);transition:transform .35s cubic-bezier(.77,0,.18,1);z-index:999;overflow-y:auto}
+.site-menu.open{transform:translateX(0)}
+.menu-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.menu-title{color:#d6b25e;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.menu-close{width:38px;height:38px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font-size:23px;line-height:1;cursor:pointer}
+.menu-close:hover{color:#d6b25e;border-color:#d6b25e}
+.menu-item{border-bottom:1px solid rgba(255,255,255,.09)}
+.menu-link,.menu-expand{width:100%;min-height:56px;display:flex;align-items:center;justify-content:space-between;color:#fff;background:transparent;border:0;font-family:inherit;font-size:14px;font-weight:600;text-align:left;cursor:pointer}
+.menu-link:hover,.menu-expand:hover,.submenu a:hover{color:#d6b25e}
+.menu-arrow{color:#d6b25e;transition:transform .25s ease}
+.menu-item.expanded .menu-arrow{transform:rotate(90deg)}
+.submenu{display:none;padding:0 0 14px 14px}
+.menu-item.expanded .submenu{display:block}
+.submenu a{display:block;padding:9px 0;color:#bfc4ca;font-size:13px;line-height:1.4}
+.menu-coming{display:block;padding:8px 0 13px 14px;color:#777e86;font-size:11px;line-height:1.5}
+.menu-secure{color:#d6b25e}
+body.menu-open{overflow:hidden}
+.site-copyright{background:#111214;color:#aeb3ba;text-align:center;padding:24px 7%;font-size:12px;letter-spacing:.04em}
+@media(max-width:800px){
+  .menu-button{display:inline-flex!important;width:42px;height:42px;margin-right:10px;flex:0 0 42px}
+  .nav-links{display:flex;align-items:center}
+  .consult-button{display:inline-block!important}
+}
+@media(max-width:420px){
+  .menu-button{width:38px;height:38px;flex-basis:38px;margin-right:7px}
+  .site-menu{width:92vw;padding:26px 24px 34px}
+}
+
+</style>
+
+
+<style id="legal-footer-style">.legal-links{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;margin-top:12px;font:13px/1.6 Arial,Helvetica,sans-serif}.legal-links a{color:inherit;text-decoration:underline;text-underline-offset:3px}.legal-links a:hover{color:#d6b25e}.legal-links a:focus-visible{outline:2px solid #d6b25e;outline-offset:4px}</style>
+<style>.policy-main{max-width:960px;margin:0 auto;padding:64px 24px 80px;color:#15233d;font:16px/1.8 Arial,Helvetica,sans-serif}.policy-main h1{font-size:clamp(32px,6vw,52px);line-height:1.15;margin:12px 0 18px}.policy-main h2{font-size:23px;line-height:1.4;margin:34px 0 12px}.policy-main p{margin:0 0 16px}.policy-main ul{padding-left:24px;margin:16px 0}.policy-main li{margin-bottom:12px}.policy-main a{color:#173f78;text-decoration:underline}.policy-kicker{color:#96702b;font-size:12px;letter-spacing:.18em;font-weight:bold}.policy-notice{background:#f8f5ec;border-left:4px solid #d6b25e;padding:22px;margin:28px 0}.policy-meta{color:#576172}</style></head><body>
+
+
+    <!-- =========================================
+         TOP CONTACT BAR
+    ========================================== -->
+
+    <div class="topbar">
+
+        <div class="topbar-left">
+
+            <span>
+                ☎ 585.746.2293
+            </span>
+
+            <span>
+                ◷ Mon–Fri: 10:00 AM–6:00 PM
+            </span>
+
+        </div>
+
+
+       <div class="topbar-right">
+
+    <a href="https://www.linkedin.com/company/the-verdyan-group/" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7 0h3.8v2.2h.05c.53-1 1.82-2.2 3.75-2.2 4.01 0 4.75 2.64 4.75 6.08V24h-3.96v-8.79c0-2.1-.04-4.8-2.93-4.8-2.93 0-3.38 2.29-3.38 4.65V24H7.5V8z"/>
+        </svg>
+    </a>
+
+    <a href="https://www.instagram.com/verdyangroup/" class="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+        </svg>
+    </a>
+
+</div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+
+    <nav class="navbar">
+
+        <a
+            class="brand"
+            href="home.html">
+
+            <img
+                src="/Verdyan 2000.png"
+                alt="The Verdyan Group">
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="home.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <a href="home.html#services">
+                Services
+            </a>
+
+            <a href="assessment.html">
+                $199 Assessment
+            </a>
+
+            <a
+                href="contact.html"
+                class="consult-button">
+
+                Book a Consultation
+
+            </a>
+
+        </div>
+
+    <button class="menu-button" id="menuButton" type="button" aria-label="Open site menu" aria-controls="siteMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+<aside class="site-menu" id="siteMenu" aria-hidden="true">
+  <div class="menu-header">
+    <div class="menu-title">Explore Verdyan</div>
+    <button class="menu-close" id="menuClose" type="button" aria-label="Close site menu">×</button>
+  </div>
+
+  <div class="menu-item">
+    <button class="menu-expand" type="button" aria-expanded="false">
+      <span>Services</span><span class="menu-arrow">›</span>
+    </button>
+    <div class="submenu">
+      <a href="governance.html">Governance &amp; vCISO</a>
+      <a href="risk.html">Risk Management</a>
+      <a href="hipaa.html">HIPAA Compliance</a><a href="compliance.html">Compliance &amp; AI Governance</a>
+      <a href="testing.html">Security Testing</a>
+      <a href="assessment.html">Security Snapshots</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <button class="menu-expand" type="button" aria-expanded="false">
+      <span>Use Cases</span><span class="menu-arrow">›</span>
+    </button>
+    <div class="submenu">
+      <span class="menu-coming">SOC 2 Readiness — coming soon</span>
+      <span class="menu-coming">Security Program Mapping — coming soon</span>
+      <span class="menu-coming">Sensitive Data &amp; Collaboration — coming soon</span>
+    </div>
+  </div>
+
+  <div class="menu-item"><button class="menu-expand" type="button" aria-expanded="false"><span>Insights</span><span class="menu-arrow">›</span></button><div class="submenu"><a href="insights.html">Map Your Mess™</a></div></div>
+
+  <div class="menu-item"><a class="menu-link menu-secure" href="secure-rooms.html"><span>Secure Rooms</span><span>→</span></a></div>
+  <div class="menu-item"><a class="menu-link" href="about.html"><span>About Us</span><span>→</span></a></div>
+  <div class="menu-item"><a class="menu-link" href="contact.html"><span>Contact</span><span>→</span></a></div>
+</aside>
+
+
+
+
+    <!-- =========================================
+         ANIMATED CONTACT HERO
+    ========================================== -->
+
+    <main class="policy-main"><div class="policy-kicker">THE VERDYAN GROUP</div><h1>Privacy Policy</h1><p class="policy-meta">Draft prepared October 14, 2026 · Effective date pending confirmation</p><aside class="policy-notice" aria-label="Confirmation notice"><strong>Draft — confirmation required before publication.</strong><p>Prepared October 14, 2026 from the supplied website files. Confirm the legal business name and public business address, applicable jurisdictions, delivery and refund terms, provider access, server retention and safeguards, payment/report matching, and live analytics or advertising settings. Unknown practices are identified in this draft and in POLICY_CONFIRMATION.md. Set an effective date after review.</p></aside><h2>1. Scope and contact</h2><p>This Policy describes the public website of The Verdyan Group, its contact and Secure Rooms update forms, and its Security Snapshot questionnaires and payment links. Contact <a href="mailto:contact@verdyan.com">contact@verdyan.com</a> with privacy questions or requests. Separate engagement agreements may address information shared during consulting. Secure Rooms is currently a development/update page; this Policy does not describe an operating customer document room.</p>
+<h2>2. Information you provide</h2><p>The contact form sends your name, email, phone number if supplied, subject, and message to an Amazon Web Services (AWS) endpoint. The Secure Rooms update form sends your email and a request to join the update list to that same endpoint. Information you send by email is also available to Verdyan and its email providers. These details support responding to inquiries, arranging services, and sending the Secure Rooms updates you request. You can ask to stop those updates by emailing us.</p><p>Snapshot answers describe your organization's governance, access controls, policies, risk, operations, and security practices. Avoid including credentials, patient information, or unnecessary personal or confidential information.</p>
+<h2>3. How Snapshot data moves</h2><ul><li><strong>General Security:</strong> completing the questionnaire sends its questions, categories, and answers to an AWS endpoint before checkout, even if you do not purchase. The current page sends blank name, business-name, and email fields with the assessment. It stores the returned assessment identifier and a Stripe payment URL in your browser.</li><li><strong>NIST CSF:</strong> the current page calculates scores and stores answers, scores, completion time, and a generated assessment identifier in browser local storage. Its supplied page code does not send those answers to an assessment endpoint. The identifier is passed to Stripe as a checkout reference.</li><li><strong>SOC 2:</strong> the current page calculates answers and readiness scores within the page and links to Stripe. Its supplied page code does not persist the answers in local storage or send them to an assessment endpoint.</li></ul><p>Reports, related communications, and order information may contain business or contact information provided for the service. Backend storage, report preparation, and payment-to-response matching cannot be established from the public page code; see the confirmation notice below.</p>
+<h2>4. Stripe payments</h2><p>Payment details are entered on Stripe-hosted checkout pages, rather than in a card-entry form on this website. Stripe processes payment and checkout information under its <a href="https://stripe.com/privacy">Privacy Policy</a>. Verdyan may receive transaction status, purchase references, checkout contact information, and payment details made available to merchants, such as card brand and last digits; the exact checkout settings and fields available to Verdyan require confirmation. Assessment identifiers in the NIST and General Security checkout URLs help connect a payment with a Snapshot. The site's payment-success page says reports are sent to the checkout email address.</p>
+<h2>5. Browser storage, technical data, and analytics</h2><p>NIST and General Security use the browser storage described above. Local storage persists beyond a page visit until cleared by you or site code; the supplied code sets no automatic expiry. On a shared device, others using the same browser profile may be able to access it. Clearing site data in your browser removes these local values and can disrupt the checkout reference. SOC 2 answers held only in page memory are lost when that page is reloaded.</p><p>No analytics scripts, advertising pixels, or site-set cookie code were identified in the supplied website files. This does not establish what the live hosting layer or Stripe uses. Hosting and service providers may process technical information such as IP addresses, request times, browser details, and error logs to deliver and protect their services; actual logging settings require confirmation. If optional analytics are enabled later, this Policy must identify the provider, data, purpose, retention, and available choices, with consent controls where required. This wording does not authorize undisclosed tracking.</p>
+<h2>6. Access and disclosures</h2><p>The observed flows involve AWS for form and General Security submissions and Stripe for checkout. Verdyan personnel and any authorized providers involved in responding to requests or delivering reports may need access to relevant information. The actual email, hosting, storage, and reporting providers and their access must be confirmed. Information may also be disclosed when legally required or as lawfully necessary to address fraud, security incidents, or legal claims. Whether information is sold, shared for targeted advertising, or used by additional providers cannot be verified from these files; no unverified promise about those practices is made here.</p>
+<h2>7. Retention and security</h2><p>Browser storage behaves as described above. Server-side retention periods, backup deletion, and retention of unpaid General Security submissions are not established by the supplied files and must be confirmed. You may request deletion using the contact address below; applicable legal, accounting, or dispute obligations may affect what can be deleted. Public form and payment endpoints use HTTPS, but the website files alone do not establish encryption at rest, access controls, or other backend safeguards. No website or transfer method can guarantee absolute security.</p>
+<h2>8. Requests and choices</h2><p>Email <a href="mailto:contact@verdyan.com">contact@verdyan.com</a> to ask about your information, request access, correction or deletion, or stop Secure Rooms updates. Describe the request and provide the email or order reference needed to locate relevant records; do not send identification documents or sensitive information unless a suitable verification method is arranged. Rights to access, delete, correct, restrict, object, obtain a copy, withdraw consent, or complain to a regulator depend on your location and applicable law. Verdyan must evaluate requests under the laws that apply; this Policy does not claim that every regional privacy law applies or that all requests can be granted. Stripe provides separate choices for information it controls.</p>
+<h2>9. Audience and international processing</h2><p>The website is directed toward organizations seeking business advisory services and is not intended for children under 13. Please contact us if a child has submitted personal information. Provider locations and international transfers are not fully established by the website code. Applicable regional disclosures, legal bases, and transfer safeguards must be confirmed before making claims about them.</p>
+<h2>10. Updates</h2><p>Changes will be posted with a revised date. Material changes will require any additional notice or consent required by applicable law.</p></main><footer>© 2026 The Verdyan™ Group. All rights reserved.<nav class="legal-links" aria-label="Legal"><a href="terms-of-service.html">Terms of Service</a><a href="privacy-policy.html">Privacy Policy</a></nav></footer><script>
+(function(){
+  const b=document.getElementById('menuButton'),
+        m=document.getElementById('siteMenu'),
+        o=document.getElementById('menuOverlay'),
+        c=document.getElementById('menuClose');
+  if(!b||!m||!o||!c) return;
+
+  function openMenu(){
+    m.classList.add('open');o.classList.add('open');document.body.classList.add('menu-open');
+    m.setAttribute('aria-hidden','false');o.setAttribute('aria-hidden','false');b.setAttribute('aria-expanded','true');
+    c.focus();
+  }
+  function closeMenu(){
+    m.classList.remove('open');o.classList.remove('open');document.body.classList.remove('menu-open');
+    m.setAttribute('aria-hidden','true');o.setAttribute('aria-hidden','true');b.setAttribute('aria-expanded','false');
+  }
+  b.addEventListener('click',openMenu);c.addEventListener('click',closeMenu);o.addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')) closeMenu();});
+  document.querySelectorAll('.menu-expand').forEach(function(x){
+    x.addEventListener('click',function(){
+      const i=x.closest('.menu-item'),v=i.classList.toggle('expanded');
+      x.setAttribute('aria-expanded',v?'true':'false');
+    });
+  });
+})();
+</script></body></html>
