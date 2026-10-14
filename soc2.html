@@ -342,9 +342,7 @@ body.menu-open{overflow:hidden}
 }
 
 </style>
-
-<style id="legal-footer-style">.legal-links{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 24px;margin-top:12px;font:13px/1.6 Arial,Helvetica,sans-serif}.legal-links a{color:inherit;text-decoration:underline;text-underline-offset:3px}.legal-links a:hover{color:#d6b25e}.legal-links a:focus-visible{outline:2px solid #d6b25e;outline-offset:4px}</style>
-</head>
+<style>.legal-links{display:inline-flex;gap:18px;margin-left:18px;flex-wrap:wrap}.legal-links a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:650px){.legal-links{display:flex;justify-content:center;margin:12px 0 0}}</style></head>
 
 <body>
 
@@ -898,6 +896,6 @@ renderQuestion();
 })();
 </script>
 
-<footer class="site-copyright">© 2026 The Verdyan™ Group. All rights reserved.<nav class="legal-links" aria-label="Legal"><a href="terms-of-service.html">Terms of Service</a><a href="privacy-policy.html">Privacy Policy</a></nav></footer>
+<footer class="site-copyright">© 2026 The Verdyan™ Group. All rights reserved.<span class="legal-links"><a href="/terms-of-service.html">Terms of Service</a><a href="/privacy-policy.html">Privacy Policy</a></span></footer>
 </body>
 </html>
