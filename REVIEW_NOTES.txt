@@ -1,0 +1,11 @@
+Verdyan website review package — October 14, 2026
+
+Changes:
+- Removed landscape Map Your Mess promotional graphic from Insights page.
+- Updated Week 1 LinkedIn link styling: smaller navy pill, gold WEEK 1 label and outline, subtle hover elevation.
+- Added HIPAA Compliance direct link to Insights header navigation.
+- HIPAA Compliance is also present on homepage Services menu and card, and at hipaa.html.
+
+Open home.html to review the homepage, insights.html for Map Your Mess, and hipaa.html for HIPAA services.
+
+Note: Please confirm the Week 1 LinkedIn destination URL before publishing.

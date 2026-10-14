@@ -189,7 +189,7 @@
 }
 
 /* =========================
-   HERO $99 PROMO
+   HERO $199 PROMO
    ========================= */
 
 .hero-promo {
@@ -217,7 +217,7 @@
 
 
     /* =========================
-       $99 GRC SNAPSHOT
+       $199 GRC SNAPSHOT
        ========================= */
 
     .snapshot {
@@ -362,14 +362,14 @@
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 18px;
 }
 
 .service-card {
     background: #ffffff;
     min-height: 340px;
-    padding: 38px 30px;
+    padding: 32px 22px;
     border: 1px solid #e2e5e9;
     display: flex;
     flex-direction: column;
@@ -397,7 +397,7 @@
 }
 
 .service-card h3 {
-    font-size: 23px;
+    font-size: 21px;
     line-height: 1.25;
     font-weight: 600;
     margin: 0 0 18px;
@@ -767,7 +767,9 @@ body.menu-open{overflow:hidden}
       <a href="home.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="home.html#services">Services</a>
-      <a href="assessment.html">$99 Assessment</a>
+      <a href="assessment.html">$199 Assessment</a>
+      <a href="insights.html">Insights</a>
+      <a href="contact.html">Contact Us</a>
       <button class="menu-button" id="menuButton" type="button" aria-label="Open site menu" aria-controls="siteMenu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -784,7 +786,7 @@ body.menu-open{overflow:hidden}
     <div class="menu-item">
       <button class="menu-expand" type="button" aria-expanded="false"><span>Services</span><span class="menu-arrow">›</span></button>
       <div class="submenu">
-        <a href="governance.html">Governance &amp; vCISO</a><a href="risk.html">Risk Management</a><a href="compliance.html">Compliance &amp; AI Governance</a><a href="testing.html">Security Testing</a><a href="assessment.html">Security Snapshots</a>
+        <a href="governance.html">Governance &amp; vCISO</a><a href="risk.html">Risk Management</a><a href="hipaa.html">HIPAA Compliance</a><a href="compliance.html">Compliance &amp; AI Governance</a><a href="testing.html">Security Testing</a><a href="assessment.html">Security Snapshots</a>
       </div>
     </div>
     <div class="menu-item">
@@ -793,7 +795,7 @@ body.menu-open{overflow:hidden}
         <span class="menu-coming">SOC 2 Readiness — coming soon</span><span class="menu-coming">Security Program Mapping — coming soon</span><span class="menu-coming">Sensitive Data &amp; Collaboration — coming soon</span>
       </div>
     </div>
-    <div class="menu-item"><span class="menu-link" style="color:#8b9198;cursor:default"><span>Insights</span><span style="font-size:10px;color:#d6b25e">COMING SOON</span></span></div>
+    <div class="menu-item"><a class="menu-link" href="insights.html"><span>Insights</span><span>→</span></a></div>
     <div class="menu-item"><a class="menu-link menu-secure" href="secure-rooms.html"><span>Secure Rooms</span><span>→</span></a></div>
     <div class="menu-item"><a class="menu-link" href="about.html"><span>About Us</span><span>→</span></a></div>
     <div class="menu-item"><a class="menu-link" href="contact.html"><span>Contact</span><span>→</span></a></div>
@@ -846,7 +848,7 @@ body.menu-open{overflow:hidden}
     letter-spacing:.22em;
     margin-bottom:18px;
   ">
-    $99 SECURITY SNAPSHOT
+    $199 SECURITY SNAPSHOT
   </div>
 
   <h2 style="
@@ -879,7 +881,7 @@ body.menu-open{overflow:hidden}
     font-weight:700;
     margin-bottom:18px;
   ">
-    <span style="color:#d6b25e;">$</span>99
+    <span style="color:#d6b25e;">$</span>199
   </div>
 
   <a href="assessment.html" style="
@@ -890,7 +892,7 @@ body.menu-open{overflow:hidden}
     padding-bottom:7px;
     border-bottom:2px solid #d6b25e;
   ">
-    VIEW THE $99 ASSESSMENT →
+    VIEW THE $199 ASSESSMENT →
   </a>
 
 </div>
@@ -898,7 +900,7 @@ body.menu-open{overflow:hidden}
 </section>
 
 
-  <!-- $99 GRC SNAPSHOT -->
+  <!-- $199 GRC SNAPSHOT -->
 
   <section class="snapshot">
 
@@ -928,7 +930,7 @@ body.menu-open{overflow:hidden}
       </div>
 
       <div class="price">
-        $99
+        $199
       </div>
 
     </div>
@@ -987,8 +989,9 @@ body.menu-open{overflow:hidden}
     </a>
 
 
+<a href="hipaa.html" class="service-card"><div class="service-number">03</div><h3>HIPAA Compliance</h3><p>Security Rule gap assessments, risk analysis, policies, safeguards, and practical remediation guidance for healthcare organizations and business associates.</p><span>Explore HIPAA →</span></a>
 <a href="/compliance.html" class="service-card">
-      <div class="service-number">03</div>
+      <div class="service-number">04</div>
 
       <h3>Compliance & AI Governance</h3>
 
@@ -1004,7 +1007,7 @@ body.menu-open{overflow:hidden}
 
     <a href="/testing.html" class="service-card">
 
-      <div class="service-number">04</div>
+      <div class="service-number">05</div>
 
       <h3>Security Testing</h3>
 
@@ -1033,6 +1036,6 @@ body.menu-open{overflow:hidden}
 })();
 </script>
 
-<footer class="site-copyright">© 2026 The Verdyan Group™. All rights reserved.</footer>
+<footer class="site-copyright">© 2026 The Verdyan™ Group. All rights reserved.</footer>
 </body>
 </html>
