@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+<title>HIPAA Security Readiness Snapshot | Verdyan Group</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f3ef;
+    color: #17191e;
+}
+
+/* NAVIGATION */
+
+nav {
+    height: 78px;
+    background: #0c1322;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .4px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 42px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* MAIN */
+
+.snapshot-page {
+    min-height: calc(100vh - 78px);
+    padding: 70px 8% 90px;
+}
+
+.snapshot-container {
+    max-width: 1050px;
+    margin: auto;
+}
+
+/* HEADER */
+
+.kicker {
+    color: #a58526;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: clamp(42px, 5vw, 68px);
+    line-height: 1.02;
+    max-width: 850px;
+    margin-bottom: 22px;
+}
+
+.intro {
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 800px;
+    color: #4b4f56;
+    margin-bottom: 45px;
+}
+
+/* PROGRESS */
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.progress-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    margin-bottom: 45px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 4%;
+    background: #176cff;
+    transition: width .3s ease;
+}
+
+/* QUESTION CARD */
+
+.question-card {
+    background: white;
+    padding: 50px;
+    border: 1px solid #e0e0e0;
+    min-height: 440px;
+}
+
+.function-label {
+    color: #a58526;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 17px;
+}
+
+.question-number {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.question-text {
+    font-size: 28px;
+    line-height: 1.3;
+    max-width: 800px;
+    margin-bottom: 35px;
+}
+
+/* ANSWERS */
+
+.answers {
+    display: grid;
+    gap: 12px;
+}
+
+.answer {
+    border: 1px solid #d8d8d8;
+    padding: 18px 20px;
+    cursor: pointer;
+    transition: .15s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.4;
+}
+
+.answer:hover {
+    border-color: #176cff;
+    background: #f7faff;
+}
+
+.answer.selected {
+    border: 2px solid #176cff;
+    background: #f1f6ff;
+}
+
+.answer input {
+    margin-top: 3px;
+}
+
+/* WHY */
+
+.why {
+    margin-top: 28px;
+    padding-top: 22px;
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    color: #686b70;
+    line-height: 1.6;
+}
+
+/* BUTTONS */
+
+.controls {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    border: none;
+    padding: 16px 27px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.previous {
+    background: transparent;
+    border: 1px solid #bbb;
+}
+
+.next {
+    background: #176cff;
+    color: white;
+}
+
+button:disabled {
+    opacity: .35;
+    cursor: default;
+}
+
+/* COMPLETION */
+
+.completion {
+    display: none;
+    background: #0c1830;
+    color: white;
+    padding: 65px;
+}
+
+.completion .kicker {
+    color: #d0a92e;
+}
+
+.completion h2 {
+    font-size: 48px;
+    line-height: 1.05;
+    margin-bottom: 22px;
+}
+
+.completion p {
+    max-width: 700px;
+    line-height: 1.7;
+    color: #d5d9e2;
+    margin-bottom: 20px;
+}
+
+.score-summary {
+    margin: 35px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.score-box {
+    border-top: 1px solid #61708a;
+    padding: 18px 0;
+}
+
+.score-box strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-button {
+    display: inline-block;
+    margin-top: 15px;
+    background: #176cff;
+    color: white;
+    text-decoration: none;
+    padding: 17px 25px;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    nav {
+        padding: 0 5%;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .snapshot-page {
+        padding: 45px 5%;
+    }
+
+    .question-card {
+        padding: 30px 22px;
+    }
+
+    .question-text {
+        font-size: 23px;
+    }
+
+    .score-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .completion {
+        padding: 40px 25px;
+    }
+
+}
+
+
+/* ===== VERDYAN GLOBAL HAMBURGER MENU ===== */
+.menu-button{
+  width:44px;height:44px;border:1px solid rgba(214,178,94,.55);border-radius:4px;
+  background:transparent;display:inline-flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:5px;cursor:pointer;transition:.25s ease;flex:0 0 auto;
+}
+.menu-button:hover{background:rgba(214,178,94,.08);border-color:#d6b25e}
+.menu-button span{width:18px;height:2px;background:#fff;display:block}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);opacity:0;visibility:hidden;transition:.3s ease;z-index:998}
+.menu-overlay.open{opacity:1;visibility:visible}
+.site-menu{position:fixed;top:0;right:0;width:min(390px,88vw);height:100vh;padding:34px 32px 40px;background:#17191c;color:#fff;box-shadow:-18px 0 45px rgba(0,0,0,.28);transform:translateX(100%);transition:transform .35s cubic-bezier(.77,0,.18,1);z-index:999;overflow-y:auto}
+.site-menu.open{transform:translateX(0)}
+.menu-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.menu-title{color:#d6b25e;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.menu-close{width:38px;height:38px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font-size:23px;line-height:1;cursor:pointer}
+.menu-close:hover{color:#d6b25e;border-color:#d6b25e}
+.menu-item{border-bottom:1px solid rgba(255,255,255,.09)}
+.menu-link,.menu-expand{width:100%;min-height:56px;display:flex;align-items:center;justify-content:space-between;color:#fff;background:transparent;border:0;font-family:inherit;font-size:14px;font-weight:600;text-align:left;cursor:pointer}
+.menu-link:hover,.menu-expand:hover,.submenu a:hover{color:#d6b25e}
+.menu-arrow{color:#d6b25e;transition:transform .25s ease}
+.menu-item.expanded .menu-arrow{transform:rotate(90deg)}
+.submenu{display:none;padding:0 0 14px 14px}
+.menu-item.expanded .submenu{display:block}
+.submenu a{display:block;padding:9px 0;color:#bfc4ca;font-size:13px;line-height:1.4}
+.menu-coming{display:block;padding:8px 0 13px 14px;color:#777e86;font-size:11px;line-height:1.5}
+.menu-secure{color:#d6b25e}
+body.menu-open{overflow:hidden}
+.site-copyright{background:#111214;color:#aeb3ba;text-align:center;padding:24px 7%;font-size:12px;letter-spacing:.04em}
+@media(max-width:800px){
+  .menu-button{display:inline-flex!important;width:42px;height:42px;margin-right:10px;flex:0 0 42px}
+  .nav-links{display:flex;align-items:center}
+  .consult-button{display:inline-block!important}
+}
+@media(max-width:420px){
+  .menu-button{width:38px;height:38px;flex-basis:38px;margin-right:7px}
+  .site-menu{width:92vw;padding:26px 24px 34px}
+}
+
+</style>
+<style>.legal-links{display:inline-flex;gap:18px;margin-left:18px;flex-wrap:wrap}.legal-links a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:650px){.legal-links{display:flex;justify-content:center;margin:12px 0 0}}</style></head>
+
+<body>
+
+<nav>
+
+<a href="/home.html" class="logo">VERDYAN GROUP</a>
+
+<div class="nav-links">
+    <a href="/home.html">HOME</a>
+    <a href="/home.html#services">SERVICES</a>
+    <a href="/assessment.html">SNAPSHOT</a>
+    <a href="/contact.html">CONTACT</a>
+</div>
+
+<button class="menu-button" id="menuButton" type="button" aria-label="Open site menu" aria-controls="siteMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+<aside class="site-menu" id="siteMenu" aria-hidden="true">
+  <div class="menu-header">
+    <div class="menu-title">Explore Verdyan</div>
+    <button class="menu-close" id="menuClose" type="button" aria-label="Close site menu">×</button>
+  </div>
+
+  <div class="menu-item">
+    <button class="menu-expand" type="button" aria-expanded="false">
+      <span>Services</span><span class="menu-arrow">›</span>
+    </button>
+    <div class="submenu">
+      <a href="governance.html">Governance &amp; vCISO</a>
+      <a href="risk.html">Risk Management</a>
+      <a href="compliance.html">Compliance &amp; AI Governance</a>
+      <a href="testing.html">Security Testing</a>
+      <a href="assessment.html">Security Snapshots</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <button class="menu-expand" type="button" aria-expanded="false">
+      <span>Use Cases</span><span class="menu-arrow">›</span>
+    </button>
+    <div class="submenu">
+      <span class="menu-coming">SOC 2 Readiness — coming soon</span>
+      <span class="menu-coming">Security Program Mapping — coming soon</span>
+      <span class="menu-coming">Sensitive Data &amp; Collaboration — coming soon</span>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <span class="menu-link" style="color:#8b9198;cursor:default">
+      <span>Insights</span><span style="font-size:10px;color:#d6b25e">COMING SOON</span>
+    </span>
+  </div>
+
+  <div class="menu-item"><a class="menu-link menu-secure" href="secure-rooms.html"><span>Secure Rooms</span><span>→</span></a></div>
+  <div class="menu-item"><a class="menu-link" href="about.html"><span>About Us</span><span>→</span></a></div>
+  <div class="menu-item"><a class="menu-link" href="contact.html"><span>Contact</span><span>→</span></a></div>
+</aside>
+
+
+
+<main class="snapshot-page">
+
+<div class="snapshot-container">
+
+<div id="assessment">
+
+<div class="kicker">$199 SECURITY SNAPSHOT · HIPAA</div>
+
+<h1>HIPAA Security Readiness Snapshot</h1>
+
+<p class="intro">
+Answer the following questions based on your organization's current
+cybersecurity practices. If you're unsure about an answer, choose
+<strong>Not sure</strong>. Your responses will be used to identify
+strengths, gaps, and priority areas for improvement.
+</p>
+
+<div class="progress-header">
+    <span id="functionName">GOVERN</span>
+    <span id="progressText">Question 1 of 25</span>
+</div>
+
+<div class="progress-track">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="question-card">
+
+    <div class="function-label" id="functionLabel">GOVERN</div>
+
+    <div class="question-number" id="questionNumber">
+        QUESTION 01
+    </div>
+
+    <div class="question-text" id="questionText"></div>
+
+    <div class="answers" id="answers"></div>
+
+    <div class="why" id="whyText"></div>
+
+</div>
+
+<div class="controls">
+
+<button
+    class="previous"
+    id="previousButton"
+    onclick="previousQuestion()"
+>
+← PREVIOUS
+</button>
+
+<button
+    class="next"
+    id="nextButton"
+    onclick="nextQuestion()"
+>
+NEXT →
+</button>
+
+</div>
+
+</div>
+
+
+<div class="completion" id="completion">
+
+<div class="kicker">HIPAA SECURITY READINESS SNAPSHOT</div>
+
+<h2>Assessment complete.</h2>
+
+<p>
+Thank you. Your responses across five HIPAA security readiness categories have been recorded.
+</p>
+
+<p>
+These preliminary self-reported results summarize your current practices,
+identify potential gaps, and provide practical recommendations for
+strengthening your cybersecurity program.
+</p>
+
+<div class="score-summary" id="scoreSummary"></div>
+<p id="hipaaSummary" style="line-height:1.65"></p>
+<div id="hipaaRecommendations" style="line-height:1.7;margin:20px 0"></div>
+<button type="button" id="downloadHipaaResults" style="background:#d6b25e;color:#101b2c;margin:10px 12px 10px 0">SAVE / PRINT RESULTS AS PDF →</button>
+<p style="font-size:13px;line-height:1.6">Your answers are stored in this browser only; they are <strong>not automatically sent to Verdyan</strong>. Save your results and send them to Verdyan using an agreed secure method so we can prepare your personalized 4–5-page review. Do not include patient information or ePHI. This screening does not determine HIPAA compliance.</p>
+
+<a href="#" class="contact-button" id="purchaseSnapshotButton">
+    PURCHASE SECURITY SNAPSHOT — $199 →
+</a>
+
+</div>
+
+</div>
+
+</main>
+
+
+<script>
+
+const questions = [
+  {
+    "function": "RISK ANALYSIS & MANAGEMENT",
+    "question": "Has your organization conducted and documented a security risk analysis identifying threats and vulnerabilities to ePHI?",
+    "citation": "45 CFR § 164.308(a)(1)(ii)(A)",
+    "why": "A documented, organization-wide risk analysis is foundational to HIPAA security planning."
+  },
+  {
+    "function": "RISK ANALYSIS & MANAGEMENT",
+    "question": "Is the security risk analysis reviewed and updated when significant technology or operational changes occur?",
+    "citation": "45 CFR § 164.308(a)(1)(ii)(A)",
+    "why": "Material changes can introduce new risks that the analysis should address."
+  },
+  {
+    "function": "RISK ANALYSIS & MANAGEMENT",
+    "question": "Is there a documented process to prioritize and address risks identified in security assessments?",
+    "citation": "45 CFR § 164.308(a)(1)(ii)(B)",
+    "why": "Risk management helps translate identified weaknesses into corrective action."
+  },
+  {
+    "function": "RISK ANALYSIS & MANAGEMENT",
+    "question": "Has a person been assigned responsibility for the organization’s HIPAA security program?",
+    "citation": "45 CFR § 164.308(a)(2)",
+    "why": "A designated security official provides clear accountability."
+  },
+  {
+    "function": "RISK ANALYSIS & MANAGEMENT",
+    "question": "Does your organization maintain a current inventory of systems and devices that store, process, or transmit ePHI?",
+    "citation": "45 CFR § 164.308(a)(1)(ii)(A)",
+    "why": "An accurate inventory supports a thorough risk analysis and appropriate safeguards."
+  },
+  {
+    "function": "ADMINISTRATIVE SAFEGUARDS",
+    "question": "Do workforce members receive security awareness training when hired and periodically afterward?",
+    "citation": "45 CFR § 164.308(a)(5)",
+    "why": "Training helps staff recognize and respond to common threats."
+  },
+  {
+    "function": "ADMINISTRATIVE SAFEGUARDS",
+    "question": "Are procedures documented for granting, reviewing, and terminating workforce access to ePHI?",
+    "citation": "45 CFR § 164.308(a)(3)–(4)",
+    "why": "Access lifecycle procedures reduce the risk of unauthorized access."
+  },
+  {
+    "function": "ADMINISTRATIVE SAFEGUARDS",
+    "question": "Is access to ePHI limited according to job responsibilities and authorized needs?",
+    "citation": "45 CFR § 164.308(a)(4)",
+    "why": "Role-based authorization limits unnecessary exposure."
+  },
+  {
+    "function": "ADMINISTRATIVE SAFEGUARDS",
+    "question": "Is there a documented process to identify, report, and respond to security incidents?",
+    "citation": "45 CFR § 164.308(a)(6)",
+    "why": "Incident response procedures help contain and investigate events."
+  },
+  {
+    "function": "ADMINISTRATIVE SAFEGUARDS",
+    "question": "Does the organization maintain and test backup, disaster recovery, and emergency operations procedures?",
+    "citation": "45 CFR § 164.308(a)(7)",
+    "why": "Contingency planning supports the availability of ePHI during disruptions."
+  },
+  {
+    "function": "PHYSICAL SAFEGUARDS",
+    "question": "Is physical access to facilities and areas containing ePHI systems appropriately restricted?",
+    "citation": "45 CFR § 164.310(a)",
+    "why": "Facility access controls protect sensitive systems."
+  },
+  {
+    "function": "PHYSICAL SAFEGUARDS",
+    "question": "Are workstations positioned or shielded to prevent unauthorized viewing of ePHI?",
+    "citation": "45 CFR § 164.310(b)–(c)",
+    "why": "Workstation controls help prevent incidental or unauthorized disclosure."
+  },
+  {
+    "function": "PHYSICAL SAFEGUARDS",
+    "question": "Are workstation use and security practices documented and communicated to staff?",
+    "citation": "45 CFR § 164.310(b)–(c)",
+    "why": "Documented workstation practices create consistent expectations."
+  },
+  {
+    "function": "PHYSICAL SAFEGUARDS",
+    "question": "Are laptops, mobile devices, and removable media containing ePHI protected against loss, theft, and unauthorized access?",
+    "citation": "45 CFR § 164.310(d)",
+    "why": "Device and media controls reduce exposure from portable equipment."
+  },
+  {
+    "function": "PHYSICAL SAFEGUARDS",
+    "question": "Are there documented procedures for secure disposal and reuse of devices or storage media containing ePHI?",
+    "citation": "45 CFR § 164.310(d)(2)",
+    "why": "Secure disposal and reuse protect data remaining on devices."
+  },
+  {
+    "function": "TECHNICAL SAFEGUARDS",
+    "question": "Does each authorized user have a unique account or user identifier for ePHI systems?",
+    "citation": "45 CFR § 164.312(a)(2)(i)",
+    "why": "Unique identifiers support accountability and access tracing."
+  },
+  {
+    "function": "TECHNICAL SAFEGUARDS",
+    "question": "Are authentication safeguards appropriate to the risks of the ePHI systems, including MFA where warranted?",
+    "citation": "45 CFR § 164.312(d)",
+    "why": "Appropriate authentication helps prevent account misuse; MFA is a strong risk-reduction measure."
+  },
+  {
+    "function": "TECHNICAL SAFEGUARDS",
+    "question": "Are system audit logs or other audit controls enabled for systems containing ePHI?",
+    "citation": "45 CFR § 164.312(b)",
+    "why": "Audit controls help record and examine system activity."
+  },
+  {
+    "function": "TECHNICAL SAFEGUARDS",
+    "question": "Are audit records periodically reviewed for suspicious or unauthorized activity?",
+    "citation": "45 CFR § 164.308(a)(1)(ii)(D)",
+    "why": "Regular reviews help detect security concerns."
+  },
+  {
+    "function": "TECHNICAL SAFEGUARDS",
+    "question": "Are appropriate safeguards, including encryption where warranted, used to protect ePHI at rest and in transit?",
+    "citation": "45 CFR § 164.312(a)(2)(iv), 164.312(e)(2)(ii)",
+    "why": "Encryption is an addressable implementation specification; decisions require documented risk-based evaluation."
+  },
+  {
+    "function": "POLICIES & VENDOR OVERSIGHT",
+    "question": "Are written HIPAA security policies and procedures maintained and periodically reviewed?",
+    "citation": "45 CFR § 164.316(a)–(b)",
+    "why": "Written procedures help establish and maintain required safeguards."
+  },
+  {
+    "function": "POLICIES & VENDOR OVERSIGHT",
+    "question": "Are workforce members informed of their security responsibilities and expected to follow applicable policies?",
+    "citation": "45 CFR § 164.308(a)(5)",
+    "why": "Workforce awareness supports consistent security practices."
+  },
+  {
+    "function": "POLICIES & VENDOR OVERSIGHT",
+    "question": "Are appropriate business associate agreements in place with vendors handling PHI on the organization’s behalf?",
+    "citation": "45 CFR § 164.308(b), 164.314(a)",
+    "why": "Business associate arrangements help define safeguarding responsibilities."
+  },
+  {
+    "function": "POLICIES & VENDOR OVERSIGHT",
+    "question": "Are security risks involving vendors that handle ePHI assessed and addressed?",
+    "citation": "45 CFR § 164.308(a)(1)(ii)(A)–(B)",
+    "why": "Third-party risks should be included in security risk analysis and management."
+  },
+  {
+    "function": "POLICIES & VENDOR OVERSIGHT",
+    "question": "Are security policies, risk analyses, training activities, and corrective actions documented and retained as required?",
+    "citation": "45 CFR § 164.316(b)",
+    "why": "Records support accountability and ongoing security management."
+  }
+];
+
+const answerOptions = [
+{
+label:"Yes — formally defined and consistently followed",
+value:3
+},
+{
+label:"Partially — practices exist but are informal or inconsistent",
+value:2
+},
+{
+label:"No — this is not currently established",
+value:1
+},
+{
+label:"Not sure",
+value:0
+}
+];
+
+
+let currentQuestion = 0;
+let responses = new Array(questions.length).fill(null);
+
+
+function renderQuestion() {
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("functionName").textContent = q.function;
+    document.getElementById("functionLabel").textContent = q.function;
+
+    document.getElementById("progressText").textContent =
+        "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+    document.getElementById("questionNumber").textContent =
+        "QUESTION " + String(currentQuestion + 1).padStart(2,"0");
+
+    document.getElementById("questionText").textContent = q.question;
+
+    document.getElementById("whyText").innerHTML =
+        "<strong>WHY WE'RE ASKING:</strong> " + q.why;
+
+    document.getElementById("progressBar").style.width =
+        ((currentQuestion + 1) / questions.length * 100) + "%";
+
+
+    const answers = document.getElementById("answers");
+
+    answers.innerHTML = "";
+
+
+    answerOptions.forEach((option,index) => {
+
+        const label = document.createElement("label");
+
+        label.className = "answer";
+
+        if(responses[currentQuestion] === option.value) {
+            label.classList.add("selected");
+        }
+
+        label.innerHTML =
+            '<input type="radio" name="answer" value="' +
+            option.value +
+            '" ' +
+            (responses[currentQuestion] === option.value ? "checked" : "") +
+            '> <span>' +
+            option.label +
+            '</span>';
+
+        label.addEventListener("click", function() {
+
+            responses[currentQuestion] = option.value;
+
+            document
+                .querySelectorAll(".answer")
+                .forEach(a => a.classList.remove("selected"));
+
+            label.classList.add("selected");
+
+        });
+
+        answers.appendChild(label);
+
+    });
+
+
+    document.getElementById("previousButton").disabled =
+        currentQuestion === 0;
+
+
+    document.getElementById("nextButton").textContent =
+        currentQuestion === questions.length - 1
+        ? "COMPLETE SNAPSHOT →"
+        : "NEXT →";
+
+}
+
+
+function nextQuestion() {
+
+    if(responses[currentQuestion] === null) {
+
+        alert("Please select an answer before continuing.");
+
+        return;
+    }
+
+    if(currentQuestion < questions.length - 1) {
+
+        currentQuestion++;
+
+        renderQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    } else {
+
+        completeAssessment();
+
+    }
+
+}
+
+
+function previousQuestion() {
+
+    if(currentQuestion > 0) {
+
+        currentQuestion--;
+
+        renderQuestion();
+
+    }
+
+}
+
+
+function completeAssessment() {
+
+    document.getElementById("assessment").style.display = "none";
+
+    const completion = document.getElementById("completion");
+
+    completion.style.display = "block";
+
+
+    const functions = ["RISK ANALYSIS & MANAGEMENT", "ADMINISTRATIVE SAFEGUARDS", "PHYSICAL SAFEGUARDS", "TECHNICAL SAFEGUARDS", "POLICIES & VENDOR OVERSIGHT"];
+
+    let summaryHTML = "";
+const scoreResults = {};
+
+    functions.forEach(fn => {
+
+        let earned = 0;
+        let possible = 0;
+
+
+        questions.forEach((q,index) => {
+
+            if(q.function === fn) {
+
+                earned += responses[index];
+
+                possible += 3;
+
+            }
+
+        });
+
+
+        const percentage =
+            Math.round((earned / possible) * 100);
+        scoreResults[fn] = percentage;
+
+
+        summaryHTML +=
+            '<div class="score-box">' +
+            '<strong>' + fn + '</strong>' +
+            percentage + '% readiness' +
+            '</div>';
+
+    });
+
+
+    document.getElementById("scoreSummary").innerHTML = summaryHTML;
+    const total = Math.round(responses.reduce((a,b)=>a+b,0)/(questions.length*3)*100);
+    document.getElementById('hipaaSummary').textContent = 'Overall self-reported readiness: ' + total + '%. This is a preliminary screening score, not a HIPAA compliance determination.';
+    const gaps = questions.map((q,i)=>({q,answer:responses[i]})).filter(x=>x.answer<3);
+    const rec = document.getElementById('hipaaRecommendations');
+    rec.innerHTML = '<h3 style="color:#d6b25e">Priority areas for review</h3>';
+    if (!gaps.length) rec.innerHTML += '<p>No gaps were self-reported. Independent verification and a complete risk analysis may still be needed.</p>';
+    else gaps.sort((a,b)=>a.answer-b.answer).slice(0,8).forEach(x=>{
+        const p=document.createElement('p');
+        p.textContent='• '+x.q.question+' — '+x.q.citation+'. '+x.q.why;
+        rec.appendChild(p);
+    });
+    window.verdyanHipaaReport = {overall:total, categoryScores:scoreResults, responses:questions.map((q,i)=>({...q, answer:answerOptions.find(a=>a.value===responses[i]).label}))};
+const assessmentId = "HIPAA-" + crypto.randomUUID();
+
+localStorage.setItem(
+    "verdyanHipaaAssessmentId",
+    assessmentId
+);
+
+const assessmentData = {
+    assessmentId: assessmentId,
+    assessmentType: "HIPAA Security Readiness",
+    completedAt: new Date().toISOString(),
+    responses: responses,
+    scores: scoreResults
+};
+
+localStorage.setItem(
+    "verdyanHipaaAssessmentData",
+    JSON.stringify(assessmentData)
+);
+
+const stripePaymentUrl =
+    "https://buy.stripe.com/bJe7sM4iNgRXftk9xccQU03" +
+    "?client_reference_id=" +
+    encodeURIComponent(assessmentId);
+
+localStorage.setItem(
+    "verdyanStripePaymentUrl",
+    stripePaymentUrl
+);
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+document.getElementById("purchaseSnapshotButton").addEventListener("click", function(event) {
+    event.preventDefault();
+
+    const stripePaymentUrl = localStorage.getItem("verdyanStripePaymentUrl");
+
+    if (!stripePaymentUrl) {
+        alert("We couldn't prepare your payment link. Please refresh and try again.");
+        return;
+    }
+
+    window.location.href = stripePaymentUrl;
+});
+document.getElementById('downloadHipaaResults').addEventListener('click',function(){
+    const report=window.verdyanHipaaReport;
+    if(!report) return;
+    const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const lines=report.responses.map((r,i)=>'<section><h3>'+ (i+1)+'. '+escapeHtml(r.question)+'</h3><p><b>Response:</b> '+escapeHtml(r.answer)+'</p><p><b>Reference:</b> '+escapeHtml(r.citation)+'</p><p>'+escapeHtml(r.why)+'</p></section>').join('');
+    const scores=Object.entries(report.categoryScores).map(([k,v])=>'<li>'+escapeHtml(k)+': '+v+'%</li>').join('');
+    const popup=window.open('','_blank');
+    if(!popup){alert('Please allow pop-ups to save the results as PDF.');return;}
+    popup.document.write('<!doctype html><html><head><meta charset="utf-8"><title>Verdyan HIPAA Security Snapshot Results</title><style>body{font:14px/1.5 Arial;max-width:850px;margin:40px auto;color:#14233b;padding:0 20px}h1{color:#173f78}section{break-inside:avoid;border-top:1px solid #ddd;padding:8px 0}h3{font-size:15px}small{color:#555}@media print{body{margin:0;max-width:none}}</style></head><body><h1>Verdyan | HIPAA Security Readiness Snapshot</h1><p><b>Overall self-reported readiness:</b> '+report.overall+'%</p><ul>'+scores+'</ul><p><small>Preliminary self-reported screening only. Not a HIPAA compliance determination or substitute for a full security risk analysis. Do not include patient information or ePHI. Share this report securely with Verdyan for the personalized 4–5-page review.</small></p>'+lines+'</body></html>');
+    popup.document.close();popup.focus();setTimeout(()=>popup.print(),300);
+});
+renderQuestion();
+
+</script>
+
+
+<script>
+(function(){
+  const b=document.getElementById('menuButton'),
+        m=document.getElementById('siteMenu'),
+        o=document.getElementById('menuOverlay'),
+        c=document.getElementById('menuClose');
+  if(!b||!m||!o||!c) return;
+
+  function openMenu(){
+    m.classList.add('open');o.classList.add('open');document.body.classList.add('menu-open');
+    m.setAttribute('aria-hidden','false');o.setAttribute('aria-hidden','false');b.setAttribute('aria-expanded','true');
+    c.focus();
+  }
+  function closeMenu(){
+    m.classList.remove('open');o.classList.remove('open');document.body.classList.remove('menu-open');
+    m.setAttribute('aria-hidden','true');o.setAttribute('aria-hidden','true');b.setAttribute('aria-expanded','false');
+  }
+  b.addEventListener('click',openMenu);c.addEventListener('click',closeMenu);o.addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')) closeMenu();});
+  document.querySelectorAll('.menu-expand').forEach(function(x){
+    x.addEventListener('click',function(){
+      const i=x.closest('.menu-item'),v=i.classList.toggle('expanded');
+      x.setAttribute('aria-expanded',v?'true':'false');
+    });
+  });
+})();
+</script>
+
+<footer class="site-copyright">© 2026 The Verdyan™ Group. All rights reserved.<span class="legal-links"><a href="/terms-of-service.html">Terms of Service</a><a href="/privacy-policy.html">Privacy Policy</a></span></footer>
+</body>
+</html>
