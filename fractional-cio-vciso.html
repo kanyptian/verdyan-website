@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractional CIO &amp; vCISO | The Verdyan™ Group</title>
+
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #161616;
+            background: #f7f7f5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* NAVIGATION */
+
+        .service-nav {
+            background: #0d1b31;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-nav a {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .service-nav a:hover {
+            color: #d9b64c;
+        }
+
+        .service-nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        /* HERO */
+
+        .service-hero {
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(34, 94, 190, 0.24),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0f1728 0%,
+                    #142746 50%,
+                    #0d1b31 100%
+                );
+
+            color: #ffffff;
+            padding: 110px 7%;
+        }
+
+        .service-hero-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .kicker {
+            color: #d9b64c;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .18em;
+            margin-bottom: 22px;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 1;
+            max-width: 900px;
+            margin: 0 0 28px;
+        }
+
+        .service-hero p {
+            max-width: 760px;
+            font-size: 19px;
+            line-height: 1.7;
+            color: #d8deea;
+            margin-bottom: 38px;
+        }
+
+        .primary-button {
+            display: inline-block;
+            background: #1465e8;
+            color: #ffffff;
+            padding: 17px 25px;
+            font-weight: 700;
+            font-size: 13px;
+            margin-right: 20px;
+        }
+
+        .secondary-link {
+            color: #d9b64c;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* GENERAL SECTIONS */
+
+        .content-section {
+            padding: 95px 7%;
+        }
+
+        .content-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            max-width: 800px;
+            margin-bottom: 55px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(2.3rem, 4vw, 4rem);
+            line-height: 1.08;
+            margin: 0 0 24px;
+        }
+
+        .section-heading p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* FOUR SERVICE CARDS */
+
+        .governance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .governance-card {
+            border: 1px solid #dedede;
+            padding: 35px 28px;
+            min-height: 300px;
+            background: #ffffff;
+        }
+
+        .card-number {
+            color: #b18c26;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .12em;
+        }
+
+        .governance-card h3 {
+            font-size: 23px;
+            margin: 28px 0 18px;
+        }
+
+        .governance-card p {
+            color: #5d5d5d;
+            line-height: 1.65;
+        }
+
+        /* VCISO SECTION */
+
+        .dark-section {
+            background: #0d1b31;
+            color: #ffffff;
+        }
+
+        .dark-section .section-heading p {
+            color: #d8deea;
+        }
+
+        .vciso-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .vciso-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px 35px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .vciso-list li {
+            border-top: 1px solid rgba(255,255,255,.22);
+            padding-top: 16px;
+            color: #e5e9f0;
+        }
+
+        /* WHO IT'S FOR */
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .audience-card {
+            padding: 32px;
+            border-top: 3px solid #d9b64c;
+            background: #ffffff;
+        }
+
+        .audience-card h3 {
+            font-size: 22px;
+        }
+
+        .audience-card p {
+            color: #5d5d5d;
+            line-height: 1.65;
+        }
+
+        /* ENGAGEMENTS */
+
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .engagement-card {
+            border: 1px solid #d8d8d8;
+            padding: 35px;
+        }
+
+        .engagement-card h3 {
+            font-size: 22px;
+        }
+
+        .engagement-card p {
+            line-height: 1.65;
+            color: #555;
+            min-height: 105px;
+        }
+
+        .engagement-card a {
+            color: #0d1b31;
+            font-weight: 700;
+        }
+
+        /* CTA */
+
+        .final-cta {
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2.2rem, 4vw, 4rem);
+            max-width: 850px;
+            margin: 0 auto 25px;
+        }
+
+        .final-cta p {
+            color: #d8deea;
+            max-width: 700px;
+            margin: 0 auto 35px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 850px) {
+
+            .service-nav {
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .service-nav-links {
+                gap: 14px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            .governance-grid,
+            .audience-grid,
+            .engagement-grid,
+            .vciso-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .vciso-list {
+                grid-template-columns: 1fr;
+            }
+
+            .service-hero {
+                padding: 75px 7%;
+            }
+
+            .content-section {
+                padding: 70px 7%;
+            }
+        }
+    
+/* ===== VERDYAN GLOBAL HAMBURGER MENU ===== */
+.menu-button{
+  width:44px;height:44px;border:1px solid rgba(214,178,94,.55);border-radius:4px;
+  background:transparent;display:inline-flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:5px;cursor:pointer;transition:.25s ease;flex:0 0 auto;
+}
+.menu-button:hover{background:rgba(214,178,94,.08);border-color:#d6b25e}
+.menu-button span{width:18px;height:2px;background:#fff;display:block}
+.menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.48);opacity:0;visibility:hidden;transition:.3s ease;z-index:998}
+.menu-overlay.open{opacity:1;visibility:visible}
+.site-menu{position:fixed;top:0;right:0;width:min(390px,88vw);height:100vh;padding:34px 32px 40px;background:#17191c;color:#fff;box-shadow:-18px 0 45px rgba(0,0,0,.28);transform:translateX(100%);transition:transform .35s cubic-bezier(.77,0,.18,1);z-index:999;overflow-y:auto}
+.site-menu.open{transform:translateX(0)}
+.menu-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.12)}
+.menu-title{color:#d6b25e;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.menu-close{width:38px;height:38px;border:1px solid rgba(255,255,255,.18);background:transparent;color:#fff;font-size:23px;line-height:1;cursor:pointer}
+.menu-close:hover{color:#d6b25e;border-color:#d6b25e}
+.menu-item{border-bottom:1px solid rgba(255,255,255,.09)}
+.menu-link,.menu-expand{width:100%;min-height:56px;display:flex;align-items:center;justify-content:space-between;color:#fff;background:transparent;border:0;font-family:inherit;font-size:14px;font-weight:600;text-align:left;cursor:pointer}
+.menu-link:hover,.menu-expand:hover,.submenu a:hover{color:#d6b25e}
+.menu-arrow{color:#d6b25e;transition:transform .25s ease}
+.menu-item.expanded .menu-arrow{transform:rotate(90deg)}
+.submenu{display:none;padding:0 0 14px 14px}
+.menu-item.expanded .submenu{display:block}
+.submenu a{display:block;padding:9px 0;color:#bfc4ca;font-size:13px;line-height:1.4}
+.menu-coming{display:block;padding:8px 0 13px 14px;color:#777e86;font-size:11px;line-height:1.5}
+.menu-secure{color:#d6b25e}
+body.menu-open{overflow:hidden}
+.site-copyright{background:#111214;color:#aeb3ba;text-align:center;padding:24px 7%;font-size:12px;letter-spacing:.04em}
+@media(max-width:800px){
+  .menu-button{display:inline-flex!important;width:42px;height:42px;margin-right:10px;flex:0 0 42px}
+  .nav-links{display:flex;align-items:center}
+  .consult-button{display:inline-block!important}
+}
+@media(max-width:420px){
+  .menu-button{width:38px;height:38px;flex-basis:38px;margin-right:7px}
+  .site-menu{width:92vw;padding:26px 24px 34px}
+}
+
+</style>
+<style>.legal-links{display:inline-flex;gap:18px;margin-left:18px;flex-wrap:wrap}.legal-links a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media(max-width:650px){.legal-links{display:flex;justify-content:center;margin:12px 0 0}}</style><style>
+.leadership-hero{background:linear-gradient(125deg,#0d1b31,#172e4e);color:#fff;padding:90px 7%}.leadership-wrap{max-width:1180px;margin:auto}.leadership-layout{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:center}.leadership-hero h1{font-size:clamp(2.6rem,5vw,4.7rem);line-height:1.08;margin:0 0 24px}.leadership-hero p{font-size:18px;line-height:1.75;color:#d8deea}.leadership-price{border:1px solid #d6b25e;padding:34px;background:rgba(255,255,255,.04)}.leadership-price strong{display:block;font-size:48px;color:#fff;margin:15px 0}.leadership-price small{font-size:16px;font-weight:400}.leadership-price p{font-size:15px}.gold-button{display:inline-block;background:#d6b25e;color:#0d1b31;padding:16px 23px;font-weight:700;font-size:14px}.leadership-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.leadership-card{background:#fff;border-top:3px solid #d6b25e;padding:32px;box-shadow:0 8px 30px #0d1b3109}.leadership-card h3{color:#0d1b31;font-size:26px;margin-top:0}.leadership-card p,.leadership-card li,.scope-note{line-height:1.8;color:#555}.leadership-card ul{padding-left:20px}.scope-note{font-size:15px;margin-top:26px}.leadership-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.leadership-steps h3{color:#0d1b31}.leadership-steps p{line-height:1.8;color:#555}.leadership-cta{padding:65px 7%;background:#0d1b31;color:#fff}.leadership-cta h2{font-size:clamp(2rem,4vw,3.2rem);margin-top:0}.leadership-cta p{line-height:1.8;color:#d8deea;max-width:720px}@media(max-width:800px){.leadership-layout,.leadership-grid,.leadership-steps{grid-template-columns:1fr}.leadership-hero{padding:60px 7%}.leadership-layout{gap:30px}.leadership-price{padding:26px}}
+</style>
+<meta name="description" content="Fractional CIO and vCISO advisory leadership from The Verdyan™ Group. 10 hours per month starting at $1,499. Book a consultation.">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav class="service-nav">
+      <a href="/home.html">VERDYAN™ GROUP</a>
+
+<div class="service-nav-links">
+    <a href="/home.html">HOME</a>
+    <a href="/home.html#services">SERVICES</a>
+    <a href="/assessment.html">SNAPSHOT</a>
+    <a href="/contact.html">CONTACT</a>
+</div>
+    <button class="menu-button" id="menuButton" type="button" aria-label="Open site menu" aria-controls="siteMenu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
+<aside class="site-menu" id="siteMenu" aria-hidden="true">
+  <div class="menu-header">
+    <div class="menu-title">Explore Verdyan™</div>
+    <button class="menu-close" id="menuClose" type="button" aria-label="Close site menu">×</button>
+  </div>
+
+  <div class="menu-item">
+    <button class="menu-expand" type="button" aria-expanded="false">
+      <span>Services</span><span class="menu-arrow">›</span>
+    </button>
+    <div class="submenu">
+      <a href="governance.html">Governance &amp; vCISO</a>
+      <a href="fractional-cio-vciso.html">Fractional CIO &amp; vCISO</a>
+      <a href="risk.html">Risk Management</a>
+      <a href="compliance.html">Compliance &amp; AI Governance</a>
+      <a href="testing.html">Security Testing</a>
+      <a href="assessment.html">Security Snapshots</a>
+    </div>
+  </div>
+
+  <div class="menu-item">
+    <button class="menu-expand" type="button" aria-expanded="false">
+      <span>Use Cases</span><span class="menu-arrow">›</span>
+    </button>
+    <div class="submenu"><a href="use-cases/soc-2-readiness.html">SOC 2 Readiness</a><a href="use-cases/security-program-mapping.html">Security Program Mapping</a><a href="use-cases/hipaa-healthcare-practices.html">HIPAA for Healthcare Practices</a><a href="use-cases/access-permission-gaps.html">Access &amp; Permission Gaps</a><a href="use-cases/key-person-dependency.html">Key-Person Dependency</a><a href="use-cases/vendor-risk-management.html">Vendor Risk Management</a><a href="use-cases.html">Explore All Use Cases →</a></div>
+  </div>
+
+  <div class="menu-item"><a class="menu-link" href="insights.html">Insights / Map Your Mess™</a></div>
+
+  <div class="menu-item"><a class="menu-link menu-secure" href="secure-rooms.html"><span>Secure Rooms</span><span>→</span></a></div>
+  <div class="menu-item"><a class="menu-link" href="about.html"><span>About Us</span><span>→</span></a></div>
+  <div class="menu-item"><a class="menu-link" href="contact.html"><span>Contact</span><span>→</span></a></div>
+</aside>
+
+
+
+
+<main>
+<section class="leadership-hero"><div class="leadership-wrap leadership-layout"><div><div class="kicker">FRACTIONAL CIO &amp; vCISO</div><h1>Executive guidance.<br>Practical progress.</h1><p>Align technology, security, and business priorities with experienced leadership from The Verdyan™ Group. Get a clear roadmap and a trusted advisor without the cost of a full-time executive.</p><a class="gold-button" href="contact.html">Book a Consultation →</a></div><aside class="leadership-price" aria-label="Monthly starting price"><div class="kicker">LEADERSHIP THAT FITS YOUR BUSINESS</div><span>Starting at</span><strong>$1,499<small> / month</small></strong><p><b>10 hours per month</b> of combined Fractional CIO and vCISO advisory support, allocated around your agreed priorities.</p><p>Scope, cadence, and deliverables are confirmed before work begins. Additional hours and larger projects are quoted separately.</p></aside></div></section>
+<section class="content-section"><div class="content-inner"><div class="section-heading"><div class="kicker">TWO PERSPECTIVES. ONE ROADMAP.</div><h2>Technology decisions with security built in.</h2><p>Choose the mix of technology and security leadership your organization needs within a shared monthly engagement.</p></div><div class="leadership-grid"><article class="leadership-card"><h3>Fractional CIO</h3><p>Make technology serve your business goals.</p><ul><li>Technology strategy and a prioritized IT roadmap</li><li>Budget planning and investment guidance</li><li>Vendor, platform, and service provider oversight</li><li>Guidance on cloud adoption, business systems, and modernization</li><li>Executive reporting and decision support</li></ul></article><article class="leadership-card"><h3>vCISO</h3><p>Give your security program clear ownership and direction.</p><ul><li>Security strategy, governance, and risk prioritization</li><li>Policy review and program improvement guidance</li><li>Compliance and audit readiness coordination</li><li>Incident preparedness and response planning</li><li>Leadership reporting and remediation oversight</li></ul></article></div><p class="scope-note">The monthly plan provides advisory leadership and oversight within 10 total hours. It does not include unlimited support, 24/7 monitoring, managed IT operations, emergency incident response, penetration testing, full compliance assessments, or independent audits. Implementation work and specialist services are scoped separately. Deliverables depend on agreed priorities and available hours.</p></div></section>
+<section class="content-section" style="padding-top:0"><div class="content-inner"><div class="section-heading"><div class="kicker">A CLEAR WAY TO START</div><h2>From priorities to progress.</h2></div><div class="leadership-steps"><article><h3>01 · Align</h3><p>Discuss your business goals, technology environment, risks, and immediate decisions in a consultation.</p></article><article><h3>02 · Prioritize</h3><p>Agree on the advisory scope, meeting cadence, and a realistic roadmap for the monthly hours.</p></article><article><h3>03 · Advance</h3><p>Work through the highest priorities, coordinate with your team, and review progress and next steps.</p></article></div></div></section>
+<section class="leadership-cta"><div class="leadership-wrap"><div class="kicker">LET’S PLAN YOUR NEXT STEP</div><h2>Bring clarity to your technology and security decisions.</h2><p>Tell us where you are today and what needs to move forward. We’ll help define the right scope for your organization.</p><a href="contact.html" class="gold-button">Book a Consultation →</a></div></section>
+</main><footer class="site-copyright">© 2026 The Verdyan™ Group. All rights reserved.<span class="legal-links"><a href="/terms-of-service.html">Terms of Service</a><a href="/privacy-policy.html">Privacy Policy</a></span></footer>
+<script>
+(function(){
+  const b=document.getElementById('menuButton'),
+        m=document.getElementById('siteMenu'),
+        o=document.getElementById('menuOverlay'),
+        c=document.getElementById('menuClose');
+  if(!b||!m||!o||!c) return;
+
+  function openMenu(){
+    m.classList.add('open');o.classList.add('open');document.body.classList.add('menu-open');
+    m.setAttribute('aria-hidden','false');o.setAttribute('aria-hidden','false');b.setAttribute('aria-expanded','true');
+    c.focus();
+  }
+  function closeMenu(){
+    m.classList.remove('open');o.classList.remove('open');document.body.classList.remove('menu-open');
+    m.setAttribute('aria-hidden','true');o.setAttribute('aria-hidden','true');b.setAttribute('aria-expanded','false');
+  }
+  b.addEventListener('click',openMenu);c.addEventListener('click',closeMenu);o.addEventListener('click',closeMenu);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open')) closeMenu();});
+  document.querySelectorAll('.menu-expand').forEach(function(x){
+    x.addEventListener('click',function(){
+      const i=x.closest('.menu-item'),v=i.classList.toggle('expanded');
+      x.setAttribute('aria-expanded',v?'true':'false');
+    });
+  });
+})();
+</script>
+</body>
+</html>

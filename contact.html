@@ -7,7 +7,7 @@
 
     <link rel="icon" type="image/png" href="/favicon.png">
     
-    <title>Contact Us | The Verdyan Group</title>
+    <title>Contact Us | The Verdyan™ Group</title>
 
     <style>
 
@@ -507,7 +507,7 @@ body.menu-open{overflow:hidden}
 
             <img
                 src="/Verdyan 2000.png"
-                alt="The Verdyan Group">
+                alt="The Verdyan™ Group">
 
         </a>
 
@@ -546,7 +546,7 @@ body.menu-open{overflow:hidden}
 <div class="menu-overlay" id="menuOverlay" aria-hidden="true"></div>
 <aside class="site-menu" id="siteMenu" aria-hidden="true">
   <div class="menu-header">
-    <div class="menu-title">Explore Verdyan</div>
+    <div class="menu-title">Explore Verdyan™</div>
     <button class="menu-close" id="menuClose" type="button" aria-label="Close site menu">×</button>
   </div>
 
@@ -556,6 +556,7 @@ body.menu-open{overflow:hidden}
     </button>
     <div class="submenu">
       <a href="governance.html">Governance &amp; vCISO</a>
+      <a href="fractional-cio-vciso.html">Fractional CIO &amp; vCISO</a>
       <a href="risk.html">Risk Management</a>
       <a href="hipaa.html">HIPAA Compliance</a><a href="compliance.html">Compliance &amp; AI Governance</a>
       <a href="testing.html">Security Testing</a>
@@ -567,11 +568,7 @@ body.menu-open{overflow:hidden}
     <button class="menu-expand" type="button" aria-expanded="false">
       <span>Use Cases</span><span class="menu-arrow">›</span>
     </button>
-    <div class="submenu">
-      <span class="menu-coming">SOC 2 Readiness — coming soon</span>
-      <span class="menu-coming">Security Program Mapping — coming soon</span>
-      <span class="menu-coming">Sensitive Data &amp; Collaboration — coming soon</span>
-    </div>
+    <div class="submenu"><a href="use-cases/soc-2-readiness.html">SOC 2 Readiness</a><a href="use-cases/security-program-mapping.html">Security Program Mapping</a><a href="use-cases/hipaa-healthcare-practices.html">HIPAA for Healthcare Practices</a><a href="use-cases/access-permission-gaps.html">Access &amp; Permission Gaps</a><a href="use-cases/key-person-dependency.html">Key-Person Dependency</a><a href="use-cases/vendor-risk-management.html">Vendor Risk Management</a><a href="use-cases.html">Explore All Use Cases →</a></div>
   </div>
 
   <div class="menu-item"><button class="menu-expand" type="button" aria-expanded="false"><span>Insights</span><span class="menu-arrow">›</span></button><div class="submenu"><a href="insights.html">Map Your Mess™</a></div></div>
@@ -774,7 +771,7 @@ body.menu-open{overflow:hidden}
 
 
             <h3>
-                The Verdyan Group
+                The Verdyan™ Group
             </h3>
 
 
@@ -899,7 +896,7 @@ contactForm.addEventListener("submit",async(event)=>{
   let result={}; try{result=await response.json();}catch(e){}
   if(!response.ok||result.success===false) throw new Error(result.message||"Unable to send message.");
   contactForm.reset();
-  alert("Thank you! Your message has been sent to The Verdyan Group.");
+  alert("Thank you! Your message has been sent to The Verdyan™ Group.");
  }catch(error){
   console.error("Contact form submission error:",error);
   alert("We couldn't send your message. Please email contact@verdyan.com directly.");

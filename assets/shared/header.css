@@ -1,0 +1,45 @@
+/* Shared header: this single stylesheet supplies every page. */
+#verdyanHeader,#verdyanHeader *{all:revert;box-sizing:border-box}
+#verdyanHeader{display:block;position:relative;z-index:1000;width:100%;margin:0;background:#0d1b30;color:#fff;border-bottom:1px solid #647081;font:14px/1.4 Arial,Helvetica,sans-serif;text-align:left}
+#verdyanHeader .v-header-row{max-width:1500px;margin:0 auto;min-height:100px;padding:12px 30px;display:flex;align-items:center;justify-content:space-between;gap:26px}
+#verdyanHeader a{color:inherit;text-decoration:none;cursor:pointer}
+#verdyanHeader .v-brand{display:block;flex:0 0 auto;line-height:0}
+#verdyanHeader .v-wordmark{display:block;width:280px;height:auto;max-width:100%;object-fit:contain;margin:0;animation:none;transform:none}
+#verdyanHeader .v-desktop{display:flex;align-items:center;gap:20px;margin-left:auto}
+#verdyanHeader .v-desktop a{font:500 13px/1.4 Arial,sans-serif;white-space:nowrap;padding:10px 0;border-bottom:2px solid transparent}
+#verdyanHeader .v-desktop a[aria-current],#verdyanHeader .v-desktop a[data-section-current]{color:#ffc65a;border-bottom-color:#ffc65a}
+#verdyanHeader a:hover{color:#ffc65a}
+#verdyanHeader .v-actions{display:flex;gap:18px;align-items:center;flex-shrink:0}
+#verdyanHeader .v-consult,#verdyanHeader .v-drawer-consult{display:block;border:1px solid #ffc65a;border-radius:4px;padding:12px 16px;color:#ffc65a;font:700 13px/1.3 Arial,sans-serif;text-align:center;white-space:nowrap}
+#verdyanHeader .v-consult:hover,#verdyanHeader .v-drawer-consult:hover{background:#ffc65a;color:#0d1b30}
+#verdyanHeader .v-menu-toggle{display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:44px;height:44px;padding:9px;border:1px solid #ffc65a;border-radius:4px;background:transparent;color:#ffc65a;cursor:pointer;flex:0 0 44px}
+#verdyanHeader .v-menu-toggle span{display:block;width:23px;height:2px;background:#ffc65a}
+#verdyanHeader :is(a,button,summary):focus-visible{outline:3px solid #ffc65a;outline-offset:5px}
+#verdyanHeader .v-drawer{display:none;position:fixed;inset:0 0 0 auto;width:min(440px,100vw);height:100dvh;max-height:100dvh;max-width:100vw;margin:0;padding:25px 28px 35px;border:0;border-left:1px solid #465365;background:#0d1b30;color:#fff;overflow:auto;overscroll-behavior:contain;font:15px/1.4 Arial,sans-serif;box-shadow:-18px 0 45px #0005}
+#verdyanHeader .v-drawer[open]{display:block}
+#verdyanHeader .v-drawer::backdrop{background:#0009}
+#verdyanHeader .v-drawer-top{display:flex;gap:12px;align-items:center;justify-content:space-between;padding-bottom:20px;border-bottom:1px solid #ffffff40}
+#verdyanHeader .v-drawer .v-wordmark{width:270px}
+#verdyanHeader .v-close{display:grid;place-items:center;background:transparent;border:0;color:#ffc65a;font:40px/1 Arial;cursor:pointer;width:44px;height:44px;flex-shrink:0}
+#verdyanHeader .v-drawer-nav{display:block;margin:10px 0 0}
+#verdyanHeader .v-drawer-nav>a,#verdyanHeader .v-drawer-nav>details{display:block;border-bottom:1px solid #ffffff30}
+#verdyanHeader .v-drawer-nav>a{padding:18px 5px;font-size:17px;font-weight:600}
+#verdyanHeader .v-drawer-nav>details{margin:0;padding:0}
+#verdyanHeader summary{display:block;position:relative;padding:18px 28px 18px 5px;list-style:none;cursor:pointer;font-size:17px;font-weight:600}
+#verdyanHeader summary::-webkit-details-marker{display:none}
+#verdyanHeader summary:after{content:'›';position:absolute;right:7px;color:#ffc65a;font:24px/1 Arial;transform:rotate(0deg)}
+#verdyanHeader details[open]>summary{color:#ffc65a}
+#verdyanHeader details[open]>summary:after{transform:rotate(90deg)}
+#verdyanHeader .v-submenu{display:block;padding:0 10px 14px 17px}
+#verdyanHeader .v-submenu>a{display:block;padding:10px 0;font-size:15px;line-height:1.45}
+#verdyanHeader .v-submenu>a[aria-current]{color:#ffc65a}
+#verdyanHeader .v-submenu>.v-all-cases{color:#ffc65a;border-top:1px solid #ffc65a;margin-top:10px;padding-top:17px}
+#verdyanHeader .v-drawer-nav>.v-drawer-consult{border:1px solid #ffc65a;margin-top:22px;padding:15px;font-size:15px}
+#verdyanHeader .v-contact{display:flex;flex-direction:column;gap:10px;padding:24px 5px 0;font:12px/1.5 Arial;color:#ccd5e1}
+#verdyanHeader .v-sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+html.verdyan-menu-open,html.verdyan-menu-open body{overflow:hidden!important}
+body.verdyan-gateway{overflow:auto}
+.verdyan-gateway .gateway{height:calc(100svh - 100px);min-height:540px}
+@media(max-width:1260px){#verdyanHeader .v-desktop{display:none}#verdyanHeader .v-header-row{padding:12px 5%}#verdyanHeader .v-actions{margin-left:auto}}
+@media(max-width:620px){#verdyanHeader .v-header-row{min-height:88px;padding:14px 5%;gap:14px}#verdyanHeader .v-wordmark{width:250px}#verdyanHeader .v-consult{display:none}#verdyanHeader .v-drawer{padding:22px}#verdyanHeader .v-drawer .v-wordmark{width:250px}#verdyanHeader .v-drawer-top{gap:6px}.verdyan-gateway .gateway{height:calc(100svh - 88px)}}
+@media(max-width:360px){#verdyanHeader .v-wordmark{width:215px}#verdyanHeader .v-drawer .v-wordmark{width:215px}#verdyanHeader .v-drawer{padding:18px}}
